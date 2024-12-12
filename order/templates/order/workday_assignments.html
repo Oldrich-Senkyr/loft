@@ -1,0 +1,55 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{% trans "Work Assignments for" %} {{ workday.employee.name }} - {{ workday.date }}</h2>
+
+    <p>
+        {% trans "Total Hours:" %} {{ workday.total_work_hours }} |
+        {% trans "Assigned Hours:" %} {{ total_assigned_hours }} |
+        {% trans "Unassigned Hours:" %} 
+        <span class="{% if unassigned_hours >= 0.5 %}text-danger{% else %}text-success{% endif %}">
+            {{ unassigned_hours }}
+        </span>
+    </p>
+
+    <h3>{% trans "Existing Assignments" %}</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>{% trans "Project" %}</th>
+                <th>{% trans "Hours Assigned" %}</th>
+                <th>{% trans "Work Performed" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for assignment in assignments %}
+            <tr>
+                <td>{{ assignment.project.name }}</td>
+                <td>{{ assignment.assigned_hours }}</td>
+                <td>{{ assignment.work_performed }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="text-center">{% trans "No assignments yet." %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>{% trans "Add New Assignment" %}</h3>
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">{% trans "Add Assignment" %}</button>
+    </form>
+
+    {% if unassigned_hours >= 0.5 %}
+    <div class="alert alert-warning mt-3">
+        {% trans "There are unassigned hours. Please ensure all hours are accounted for." %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

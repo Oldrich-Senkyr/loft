@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-11 07:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: .\agent\models.py:9
+msgid "Person"
+msgstr "Osoba"
+
+#: .\agent\models.py:10
+msgid "Persons"
+msgstr "Osoby"
+
+#: .\agent\models.py:13
+msgid "Dr."
+msgstr "Dr."
+
+#: .\agent\models.py:14
+msgid "Ing."
+msgstr "Ing."
+
+#: .\agent\models.py:15
+msgid "Ph.D."
+msgstr "Ph.D."
+
+#: .\agent\models.py:16
+msgid "MBA"
+msgstr "MBA"
+
+#: .\agent\models.py:21
+msgid "Employee"
+msgstr "Zaměstnanec"
+
+#: .\agent\models.py:22
+msgid "Guest"
+msgstr "Host"
+
+#: .\agent\models.py:23
+msgid "Contractor"
+msgstr "Zhotovitel"
+
+#: .\agent\models.py:24
+msgid "Supplier"
+msgstr "Dodavatel"
+
+#: .\agent\models.py:25
+msgid "Customer"
+msgstr "Zákazník"
+
+#: .\agent\models.py:26
+msgid "Other"
+msgstr "Ostatní"
+
+#: .\agent\templates\agent\list.html:5 .\agent\views.py:10
+msgid "Persons List"
+msgstr "Seznam osob"
+
+#: .\agent\templates\agent\list.html:17
+msgid "No persons found."
+msgstr "Databáze osob je prázdná"
+
+#: ⁨.\agent\templates\agent\person_detail copy.html⁩:10
+#: .\agent\templates\agent\person_detail.html:10
+msgid "Unique ID:"
+msgstr "Jedinečné ID"
+
+#: ⁨.\agent\templates\agent\person_detail copy.html⁩:11
+#: .\agent\templates\agent\person_detail.html:11
+msgid "Organization:"
+msgstr "Organizace"
+
+#: ⁨.\agent\templates\agent\person_detail copy.html⁩:12
+#: .\agent\templates\agent\person_detail.html:12
+msgid "Role:"
+msgstr "Role"
+
+#: ⁨.\agent\templates\agent\person_detail copy.html⁩:19
+#: .\agent\templates\agent\person_detail.html:21
+msgid "Select Month:"
+msgstr "Vyber měsíc"
+
+#: ⁨.\agent\templates\agent\person_detail copy.html⁩:22
+#: .\agent\templates\agent\person_detail.html:26
+msgid "View Monthly Summary"
+msgstr "Zobrazit měsíční přehled"
+
+#: ⁨.\agent\templates\agent\person_detail copy.html⁩:29
+#: .\agent\templates\agent\person_detail.html:30
+msgid "View Work Days List"
+msgstr "Zobrazit pracovní dny"

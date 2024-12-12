@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-11 07:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: .\reader\admin.py:11
+msgid "event time"
+msgstr "čas události"
+
+#: .\reader\admin.py:17
+msgid "Today"
+msgstr "Dnes"
+
+#: .\reader\admin.py:18
+msgid "Past 7 days"
+msgstr "Posledních 7 dní"
+
+#: .\reader\admin.py:19
+msgid "This month"
+msgstr "Tento měsíc"
+
+#: .\reader\admin.py:20
+msgid "This year"
+msgstr "Tento rok"
+
+#: .\reader\admin.py:21
+msgid "Choose specific date"
+msgstr "Zvolte konkrétní datum"
+
+#: .\reader\forms.py:12 .\reader\templates\reader\events_list.html:26
+#: .\reader\templates\reader\events_list.html:64
+#: .\reader\templates\reader\events_list.html:126
+#: .\reader\templates\reader\events_list_old.html:19
+#: .\reader\templates\reader\events_list_old.html:124
+msgid "Person"
+msgstr "Osoba"
+
+#: .\reader\forms.py:13 .\reader\templates\reader\events_list.html:35
+#: .\reader\templates\reader\events_list.html:77
+#: .\reader\templates\reader\events_list.html:128
+#: .\reader\templates\reader\events_list_old.html:28
+#: .\reader\templates\reader\events_list_old.html:126
+msgid "Event Type"
+msgstr "Typ události"
+
+#: .\reader\forms.py:14
+msgid "Event Date and Time"
+msgstr "Datum události"
+
+#: .\reader\forms.py:15 .\reader\templates\reader\events_list.html:102
+#: .\reader\templates\reader\events_list.html:129
+#: .\reader\templates\reader\events_list_old.html:127
+msgid "Departure Reason"
+msgstr "Důvod přerušení"
+
+#: .\reader\forms.py:26
+msgid "Event time is required."
+msgstr "Je vyžadován čas události."
+
+#: .\reader\models.py:11 .\reader\views.py:92
+msgid "Start of working hours"
+msgstr "Začátek pracovní doby"
+
+#: .\reader\models.py:12 .\reader\views.py:93
+msgid "End of working hours"
+msgstr "Konec pracovní doby"
+
+#: .\reader\models.py:13 .\reader\views.py:94
+msgid "Break start"
+msgstr "Začátek přestávky"
+
+#: .\reader\models.py:14 .\reader\views.py:95
+msgid "Break end"
+msgstr "Konec přestávky"
+
+#: .\reader\models.py:15 .\reader\views.py:96
+msgid "Visit start"
+msgstr "Začátek návštěvy"
+
+#: .\reader\models.py:16 .\reader\views.py:97
+msgid "Visit end"
+msgstr "Konec návštěvy"
+
+#: .\reader\models.py:19
+msgid "N/a"
+msgstr "N/a"
+
+#: .\reader\models.py:20 .\reader\views.py:102
+msgid "Legal"
+msgstr "Zákonný důvod"
+
+#: .\reader\models.py:21 .\reader\views.py:103
+msgid "Illegal"
+msgstr "Neplacené volno"
+
+#: .\reader\models.py:51
+msgid "Invalid date/time format for event_time."
+msgstr "Nesprávný formát data nebo času."
+
+#: .\reader\models.py:64
+msgid "Attendance Event"
+msgstr "Událost"
+
+#: .\reader\models.py:65
+msgid "Attendance Events"
+msgstr "Události"
+
+#: .\reader\templates\reader\add_attendance_event.html:6
+#: .\reader\templates\reader\events_list_old.html:11
+#: .\reader\templates\reader\events_list_old.html:49
+msgid "Add Attendance Event"
+msgstr "Přidat záznam docházky"
+
+#: .\reader\templates\reader\add_attendance_event.html:10
+msgid "Selected Date"
+msgstr "Vyberte datum:"
+
+#: .\reader\templates\reader\add_attendance_event.html:72
+#: .\reader\templates\reader\events_list.html:115
+#: .\reader\templates\reader\events_list_old.html:110
+msgid "Save"
+msgstr "Uložit"
+
+#: .\reader\templates\reader\add_attendance_event.html:75
+#: .\reader\templates\reader\edit_attendance_event.html:42
+#: .\reader\templates\reader\events_list.html:118
+#: .\reader\templates\reader\events_list.html:167
+#: .\reader\templates\reader\events_list_old.html:113
+#: .\reader\templates\reader\events_list_old.html:157
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: .\reader\templates\reader\edit_attendance_event.html:5
+msgid "Edit Attendance Event"
+msgstr "Upravit docházku"
+
+#: .\reader\templates\reader\edit_attendance_event.html:39
+msgid "Save Changes"
+msgstr "Uložit změny"
+
+#: .\reader\templates\reader\event_detail.html:8
+msgid "Unique ID:"
+msgstr "Jedinečné ID"
+
+#: .\reader\templates\reader\event_detail.html:9
+msgid "Organization:"
+msgstr "Organizace"
+
+#: .\reader\templates\reader\event_detail.html:10
+msgid "Role:"
+msgstr "Role"
+
+#: .\reader\templates\reader\event_detail.html:17
+msgid "Select Month:"
+msgstr "Vyberte měsíc:"
+
+#: .\reader\templates\reader\event_detail.html:20
+msgid "View Monthly Summary"
+msgstr "Zobrazit měsíční přehled"
+
+#: .\reader\templates\reader\events_list.html:5
+#: .\reader\templates\reader\events_list_old.html:5
+msgid "Attendance list"
+msgstr "Seznam docházky"
+
+#: .\reader\templates\reader\events_list.html:28
+#: .\reader\templates\reader\events_list.html:37
+#: .\reader\templates\reader\events_list_old.html:21
+#: .\reader\templates\reader\events_list_old.html:30
+msgid "All"
+msgstr "Všechny"
+
+#: .\reader\templates\reader\events_list.html:38
+#: .\reader\templates\reader\events_list_old.html:31
+msgid "Arrival"
+msgstr "Příchod"
+
+#: .\reader\templates\reader\events_list.html:39
+#: .\reader\templates\reader\events_list_old.html:32
+msgid "Departure"
+msgstr "Odchod"
+
+#: .\reader\templates\reader\events_list.html:43
+#: .\reader\templates\reader\events_list_old.html:36
+msgid "Event Date"
+msgstr "Datum události"
+
+#: .\reader\templates\reader\events_list.html:48
+#: .\reader\templates\reader\events_list_old.html:41
+msgid "Filter"
+msgstr "Filtr"
+
+#: .\reader\templates\reader\events_list.html:84
+msgid "No event types available"
+msgstr "Nejsou k dispozici žádné typy událostí"
+
+#: .\reader\templates\reader\events_list.html:91
+#: .\reader\templates\reader\events_list.html:127
+#: .\reader\templates\reader\events_list_old.html:125
+msgid "Event Time"
+msgstr "Čas události"
+
+#: .\reader\templates\reader\events_list.html:130
+#: .\reader\templates\reader\events_list_old.html:128
+msgid "Timestamp"
+msgstr "Časové razítko"
+
+#: .\reader\templates\reader\events_list.html:131
+#: .\reader\templates\reader\events_list_old.html:129
+msgid "Actions"
+msgstr "Akce"
+
+#: .\reader\templates\reader\events_list.html:164
+#: .\reader\templates\reader\events_list_old.html:154
+msgid "Are you sure you want to delete this record?"
+msgstr "Opravdu chcete smazat tento záznam?"
+
+#: .\reader\templates\reader\events_list.html:165
+#: .\reader\templates\reader\events_list_old.html:155
+msgid "This action cannot be undone!"
+msgstr "Tuto akci nelze vrátit zpět!"
+
+#: .\reader\templates\reader\events_list.html:166
+#: .\reader\templates\reader\events_list_old.html:156
+msgid "Yes, delete!"
+msgstr "Ano, smazat!"
+
+#: .\reader\templates\reader\events_list.html:190
+#: .\reader\templates\reader\events_list_old.html:180
+msgid "No persons found."
+msgstr "Nebyly nalezeny žádné osoby"
+
+#: .\reader\templates\reader\select_person_and_date.html:8
+msgid "Select Person"
+msgstr "Vyberte osobu:"
+
+#: .\reader\templates\reader\select_person_and_date.html:15
+msgid "Select Date"
+msgstr "Vyberte datum:"
+
+#: .\reader\templates\reader\select_person_and_date.html:18
+msgid "Proceed"
+msgstr "Pokračovat"
+
+#: .\reader\views.py:396
+msgid "All fields are required."
+msgstr "Všechna pole jsou povinná."
+
+#: .\reader\views.py:406
+msgid "Invalid date/time format."
+msgstr "Nesprávný formát data nebo času."
+
+#: .\reader\views.py:424
+msgid "An entry for the start of working time already exists!"
+msgstr "Záznam pro začátek pracovní doby již existuje!"
+
+#: .\reader\views.py:426
+msgid "An entry for the end of working time already exists!"
+msgstr "Záznam pro konec pracovní doby již existuje!"
+
+#~ msgid "Break Start"
+#~ msgstr "Začátek přestávky"
+
+#~ msgid "Break End"
+#~ msgstr "Konec přestávky"
+
+#~ msgid "Add New Attendance Event"
+#~ msgstr "Přidat záznam docházky"
+
+#~ msgid "Start of Working Hours"
+#~ msgstr "Začátek pracovní doby"
+
+#~ msgid "End of Working Hours"
+#~ msgstr "Konec pracovní doby"
+
+#~ msgid "Visit Start"
+#~ msgstr "Začátek návštěvy"
+
+#~ msgid "Visit End"
+#~ msgstr "Konec návštěvy"
+
+#~ msgid "Reason"
+#~ msgstr "Důvod"
+
+#~ msgid "Select Reason"
+#~ msgstr "Vyberte důvod:"
+
+#~ msgid "Meeting"
+#~ msgstr "Schůzka"
+
+#~ msgid "Work"
+#~ msgstr "Pracovní doba"
+
+#~ msgid "Visit"
+#~ msgstr "Návštěva"
+
+#~ msgid "Save Event"
+#~ msgstr "Uložit záznam"
+
+#~ msgid "End of shift"
+#~ msgstr "Konec směny"
+
+#~ msgid "Break arrival"
+#~ msgstr "Konec přestávky"

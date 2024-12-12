@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Attendance Event</title>
+    <link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-md mx-auto bg-white p-8 mt-10 rounded shadow-md">
+        <h2 class="text-2xl font-bold mb-4">{{ _('Create Attendance Event') }}</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="person" class="block font-medium text-gray-700">{{ _('Person') }}</label>
+                <select id="person" name="person" class="block w-full mt-1 border-gray-300 rounded-md">
+                    {% for person in persons %}
+                        <option value="{{ person.id }}">{{ person.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="event_type" class="block font-medium text-gray-700">{{ _('Event Type') }}</label>
+                <select id="event_type" name="event_type" class="block w-full mt-1 border-gray-300 rounded-md">
+                    {% for key, label in event_types %}
+                        <option value="{{ key }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="event_time" class="block font-medium text-gray-700">{{ _('Event Time') }}</label>
+                <input
+                    type="datetime-local"
+                    id="event_time"
+                    name="event_time"
+                    class="block w-full mt-1 border-gray-300 rounded-md"
+                >
+            </div>
+            <div class="mb-4">
+                <label for="departure_reason" class="block font-medium text-gray-700">{{ _('Departure Reason') }}</label>
+                <select id="departure_reason" name="departure_reason" class="block w-full mt-1 border-gray-300 rounded-md">
+                    {% for key, label in departure_reasons %}
+                        <option value="{{ key }}" {% if key == "illegal" %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button
+                type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+                {{ _('Submit') }}
+            </button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

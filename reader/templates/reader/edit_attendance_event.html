@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container mx-auto p-5">
+    <h1 class="text-2xl font-bold mb-5">{% trans "Edit Attendance Event" %}</h1>
+    <form method="post" class="bg-white shadow-md rounded-lg p-6">
+        {% csrf_token %}
+          <!-- Skrytý vstup pro redirect_url -->
+          <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">   
+    
+        <div class="grid grid-cols-4 gap-4">
+            <!-- Person field with label above -->
+            <div class="col-span-1">
+                <label for="id_person" class="block font-semibold">{{ form.person.label }} </label>
+                {{ form.person }}
+            </div>
+    
+            <!-- Event Type field with label above -->
+            <div class="col-span-1">
+                <label for="id_event_type" class="block font-semibold">{{ form.event_type.label }}</label>
+                {{ form.event_type }}
+            </div>
+    
+            <!-- Event Time field with label above -->
+            <div class="col-span-1">
+                <label for="id_event_time" class="block font-semibold">{{ form.event_time.label }}</label>
+                <input type="datetime-local" name="event_time" value="{{ form.event_time.value|date:'Y-m-d\TH:i' }}" required id="id_event_time">
+            </div>
+    
+            <!-- Departure Reason field with label above -->
+            <div class="col-span-1">
+                <label for="id_departure_reason" class="block font-semibold">{{ form.departure_reason.label }}</label>
+                {{ form.departure_reason }}
+            </div>
+        </div>
+    
+        <div class="mt-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                {% trans "Save Changes" %}
+            </button>
+            <a href="{% url 'reader_i18n:events_list' %}" class="ml-4 text-blue-500 hover:underline">
+                {% trans "Cancel" %}
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock  %}

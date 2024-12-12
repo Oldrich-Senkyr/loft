@@ -1,0 +1,274 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-11 07:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\reader\admin.py:11
+msgid "event time"
+msgstr ""
+
+#: .\reader\admin.py:17
+msgid "Today"
+msgstr ""
+
+#: .\reader\admin.py:18
+msgid "Past 7 days"
+msgstr ""
+
+#: .\reader\admin.py:19
+msgid "This month"
+msgstr ""
+
+#: .\reader\admin.py:20
+msgid "This year"
+msgstr ""
+
+#: .\reader\admin.py:21
+msgid "Choose specific date"
+msgstr ""
+
+#: .\reader\forms.py:12 .\reader\templates\reader\events_list.html:26
+#: .\reader\templates\reader\events_list.html:64
+#: .\reader\templates\reader\events_list.html:126
+#: .\reader\templates\reader\events_list_old.html:19
+#: .\reader\templates\reader\events_list_old.html:124
+msgid "Person"
+msgstr ""
+
+#: .\reader\forms.py:13 .\reader\templates\reader\events_list.html:35
+#: .\reader\templates\reader\events_list.html:77
+#: .\reader\templates\reader\events_list.html:128
+#: .\reader\templates\reader\events_list_old.html:28
+#: .\reader\templates\reader\events_list_old.html:126
+msgid "Event Type"
+msgstr ""
+
+#: .\reader\forms.py:14
+msgid "Event Date and Time"
+msgstr ""
+
+#: .\reader\forms.py:15 .\reader\templates\reader\events_list.html:102
+#: .\reader\templates\reader\events_list.html:129
+#: .\reader\templates\reader\events_list_old.html:127
+msgid "Departure Reason"
+msgstr ""
+
+#: .\reader\forms.py:26
+msgid "Event time is required."
+msgstr ""
+
+#: .\reader\models.py:11 .\reader\views.py:92
+msgid "Start of working hours"
+msgstr ""
+
+#: .\reader\models.py:12 .\reader\views.py:93
+msgid "End of working hours"
+msgstr ""
+
+#: .\reader\models.py:13 .\reader\views.py:94
+msgid "Break start"
+msgstr ""
+
+#: .\reader\models.py:14 .\reader\views.py:95
+msgid "Break end"
+msgstr ""
+
+#: .\reader\models.py:15 .\reader\views.py:96
+msgid "Visit start"
+msgstr ""
+
+#: .\reader\models.py:16 .\reader\views.py:97
+msgid "Visit end"
+msgstr ""
+
+#: .\reader\models.py:19
+msgid "N/a"
+msgstr ""
+
+#: .\reader\models.py:20 .\reader\views.py:102
+msgid "Legal"
+msgstr ""
+
+#: .\reader\models.py:21 .\reader\views.py:103
+msgid "Illegal"
+msgstr ""
+
+#: .\reader\models.py:51
+msgid "Invalid date/time format for event_time."
+msgstr ""
+
+#: .\reader\models.py:64
+msgid "Attendance Event"
+msgstr ""
+
+#: .\reader\models.py:65
+msgid "Attendance Events"
+msgstr ""
+
+#: .\reader\templates\reader\add_attendance_event.html:6
+#: .\reader\templates\reader\events_list_old.html:11
+#: .\reader\templates\reader\events_list_old.html:49
+msgid "Add Attendance Event"
+msgstr ""
+
+#: .\reader\templates\reader\add_attendance_event.html:10
+msgid "Selected Date"
+msgstr ""
+
+#: .\reader\templates\reader\add_attendance_event.html:72
+#: .\reader\templates\reader\events_list.html:115
+#: .\reader\templates\reader\events_list_old.html:110
+msgid "Save"
+msgstr ""
+
+#: .\reader\templates\reader\add_attendance_event.html:75
+#: .\reader\templates\reader\edit_attendance_event.html:42
+#: .\reader\templates\reader\events_list.html:118
+#: .\reader\templates\reader\events_list.html:167
+#: .\reader\templates\reader\events_list_old.html:113
+#: .\reader\templates\reader\events_list_old.html:157
+msgid "Cancel"
+msgstr ""
+
+#: .\reader\templates\reader\edit_attendance_event.html:5
+msgid "Edit Attendance Event"
+msgstr ""
+
+#: .\reader\templates\reader\edit_attendance_event.html:39
+msgid "Save Changes"
+msgstr ""
+
+#: .\reader\templates\reader\event_detail.html:8
+msgid "Unique ID:"
+msgstr ""
+
+#: .\reader\templates\reader\event_detail.html:9
+msgid "Organization:"
+msgstr ""
+
+#: .\reader\templates\reader\event_detail.html:10
+msgid "Role:"
+msgstr ""
+
+#: .\reader\templates\reader\event_detail.html:17
+msgid "Select Month:"
+msgstr ""
+
+#: .\reader\templates\reader\event_detail.html:20
+msgid "View Monthly Summary"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:5
+#: .\reader\templates\reader\events_list_old.html:5
+msgid "Attendance list"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:28
+#: .\reader\templates\reader\events_list.html:37
+#: .\reader\templates\reader\events_list_old.html:21
+#: .\reader\templates\reader\events_list_old.html:30
+msgid "All"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:38
+#: .\reader\templates\reader\events_list_old.html:31
+msgid "Arrival"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:39
+#: .\reader\templates\reader\events_list_old.html:32
+msgid "Departure"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:43
+#: .\reader\templates\reader\events_list_old.html:36
+msgid "Event Date"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:48
+#: .\reader\templates\reader\events_list_old.html:41
+msgid "Filter"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:84
+msgid "No event types available"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:91
+#: .\reader\templates\reader\events_list.html:127
+#: .\reader\templates\reader\events_list_old.html:125
+msgid "Event Time"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:130
+#: .\reader\templates\reader\events_list_old.html:128
+msgid "Timestamp"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:131
+#: .\reader\templates\reader\events_list_old.html:129
+msgid "Actions"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:164
+#: .\reader\templates\reader\events_list_old.html:154
+msgid "Are you sure you want to delete this record?"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:165
+#: .\reader\templates\reader\events_list_old.html:155
+msgid "This action cannot be undone!"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:166
+#: .\reader\templates\reader\events_list_old.html:156
+msgid "Yes, delete!"
+msgstr ""
+
+#: .\reader\templates\reader\events_list.html:190
+#: .\reader\templates\reader\events_list_old.html:180
+msgid "No persons found."
+msgstr ""
+
+#: .\reader\templates\reader\select_person_and_date.html:8
+msgid "Select Person"
+msgstr ""
+
+#: .\reader\templates\reader\select_person_and_date.html:15
+msgid "Select Date"
+msgstr ""
+
+#: .\reader\templates\reader\select_person_and_date.html:18
+msgid "Proceed"
+msgstr ""
+
+#: .\reader\views.py:396
+msgid "All fields are required."
+msgstr ""
+
+#: .\reader\views.py:406
+msgid "Invalid date/time format."
+msgstr ""
+
+#: .\reader\views.py:424
+msgid "An entry for the start of working time already exists!"
+msgstr ""
+
+#: .\reader\views.py:426
+msgid "An entry for the end of working time already exists!"
+msgstr ""

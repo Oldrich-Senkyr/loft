@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <div class="bg-gray-100 p-5">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h1 class="text-2xl font-bold mb-4">
+                {{ person.last_name }} {{ person.first_name }} ({{ person.display_name }})
+            </h1>
+            <p><strong>{% trans "Unique ID:" %}</strong> {{ person.unique_id }}</p>
+            <p><strong>{% trans "Organization:" %}</strong> {{ person.organization }}</p>
+            <p><strong>{% trans "Role:" %}</strong> {{ person.get_role_display }}</p>
+    
+            <!-- Formulář pro výběr měsíce -->
+            {% now "Y" as current_year %}
+            {% now "m" as current_month %}
+            
+            <form action="{% url 'eval:workdays_and_summary' person.id %}" method="post" class="mt-4">
+                
+                {% csrf_token %}
+                <label for="month" class="block mb-2 font-semibold">{% trans "Select Month:" %}</label>
+                <input type="month" id="month" name="month" value="{{ current_year }}-{{ current_month }}" class="border rounded p-2">
+
+                <!-- Buttons to handle different actions -->
+                <button type="submit" name="action" value="view_summary" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    {% trans "View Monthly Summary" %}
+                </button>
+                
+                <button type="submit" name="action" value="view_workdays" class="mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+                    {% trans "View Work Days List" %}
+                </button>
+            </form>
+
+        </div>
+    </div>
+    {% if debug %}
+        <div style="position: fixed; bottom: 10px; right: 10px; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 5px;">
+           {{ template_name }}
+        </div>
+    {% endif %}    
+{% endblock %}
+

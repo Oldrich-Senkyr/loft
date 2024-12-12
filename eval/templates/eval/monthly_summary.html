@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% load custom_filters %}
+
+{% block content %}
+<body class="bg-gray-100 p-5">
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <!-- Person Information -->
+        <h1 class="text-2xl font-bold mb-4">{{ person.first_name }} {{ person.second_name }} ({{ person.display_name }})</h1>
+        <p><strong>{% trans "Unique ID:" %}</strong> {{ person.unique_id }}</p>
+        <p><strong>{% trans "Organization:" %}</strong> {{ person.organization }}</p>
+        <p><strong>{% trans "Role:" %}</strong> {{ person.get_role_display }}</p>
+        
+        <!-- Daily and Monthly Work Hours Summary -->
+        <h2 class="text-xl font-bold mt-6 mb-4">{% trans "Monthly Work Summary" %} ({{ month }}/{{ year }})</h2>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Start Time" %}</th>
+                    <th>{% trans "End Time" %}</th>
+                    <th>{% trans "Hours Worked" %}</th>
+                    <th>{% trans "Legal Break Hours" %}</th>
+                    <th>{% trans "Illegal Break Hours" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in daily_summary %}
+                    <tr>
+                        <td>{{ entry.date }}</td>
+                        <!-- Handle cases where start_time and end_time might be None -->
+                        <td>{% if entry.start_time %}{{ entry.start_time|date:"H:i" }}{% else %}{% trans "N/A" %}{% endif %}</td>
+                        <td>{% if entry.end_time %}{{ entry.end_time|date:"H:i" }}{% else %}{% trans "N/A" %}{% endif %}</td>
+                        <td>{{ entry.work_hours|format_timedelta }}</td>  <!-- Apply custom format_time filter -->
+                        <td>{{ entry.legal_break_hours|format_timedelta }}</td>  <!-- Apply custom format_time filter -->
+                        <td>{{ entry.illegal_break_hours|format_timedelta }}</td>  <!-- Apply custom format_time filter -->
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="6">
+                        <hr style="border: 1px solid #000;">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style = "font-weight: bold" >{% trans "Total for Month" %}</td>
+                    <td><strong>{{ monthly_total_hours|format_timedelta }}</strong></td>  <!-- Apply custom format_time filter -->
+                    <td><strong>{{ monthly_total_legal_break_hours|format_timedelta }}</strong></td>  <!-- Apply custom format_time filter -->
+                    <td><strong>{{ monthly_total_illegal_break_hours|format_timedelta }}</strong></td>  <!-- Apply custom format_time filter -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+{% if debug %}
+        <div style="position: fixed; bottom: 10px; right: 10px; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 5px;">
+            {{ template_name }}
+        </div>
+    {% endif %}
+{% endblock %}

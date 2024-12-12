@@ -1,0 +1,318 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-11 07:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\reader\admin.py:11
+msgid "event time"
+msgstr "Ereigniszeit"
+
+#: .\reader\admin.py:17
+msgid "Today"
+msgstr "Heute"
+
+#: .\reader\admin.py:18
+msgid "Past 7 days"
+msgstr "Letzte 7 Tage"
+
+#: .\reader\admin.py:19
+msgid "This month"
+msgstr "Dieser Monat"
+
+#: .\reader\admin.py:20
+msgid "This year"
+msgstr "Dieser Jahr"
+
+#: .\reader\admin.py:21
+msgid "Choose specific date"
+msgstr "Bestimmtes Datum wählen"
+
+#: .\reader\forms.py:12 .\reader\templates\reader\events_list.html:26
+#: .\reader\templates\reader\events_list.html:64
+#: .\reader\templates\reader\events_list.html:126
+#: .\reader\templates\reader\events_list_old.html:19
+#: .\reader\templates\reader\events_list_old.html:124
+msgid "Person"
+msgstr "Person"
+
+#: .\reader\forms.py:13 .\reader\templates\reader\events_list.html:35
+#: .\reader\templates\reader\events_list.html:77
+#: .\reader\templates\reader\events_list.html:128
+#: .\reader\templates\reader\events_list_old.html:28
+#: .\reader\templates\reader\events_list_old.html:126
+msgid "Event Type"
+msgstr "Veranstaltungstyp"
+
+#: .\reader\forms.py:14
+#, fuzzy
+#| msgid "Event Date"
+msgid "Event Date and Time"
+msgstr "Datum des Ereignisses"
+
+#: .\reader\forms.py:15 .\reader\templates\reader\events_list.html:102
+#: .\reader\templates\reader\events_list.html:129
+#: .\reader\templates\reader\events_list_old.html:127
+msgid "Departure Reason"
+msgstr "Grund des Abgangs"
+
+#: .\reader\forms.py:26
+msgid "Event time is required."
+msgstr "Ereigniszeit ist erforderlich"
+
+#: .\reader\models.py:11 .\reader\views.py:92
+msgid "Start of working hours"
+msgstr "Beginn der Arbeitszeit"
+
+#: .\reader\models.py:12 .\reader\views.py:93
+msgid "End of working hours"
+msgstr "Endzeit der Arbeitszeit"
+
+#: .\reader\models.py:13 .\reader\views.py:94
+msgid "Break start"
+msgstr "Beginn der Pause"
+
+#: .\reader\models.py:14 .\reader\views.py:95
+msgid "Break end"
+msgstr "Ende der Pause"
+
+#: .\reader\models.py:15 .\reader\views.py:96
+msgid "Visit start"
+msgstr "Beginn des Besuch"
+
+#: .\reader\models.py:16 .\reader\views.py:97
+msgid "Visit end"
+msgstr "Ende des Besuchs"
+
+#: .\reader\models.py:19
+msgid "N/a"
+msgstr "keine Angabe"
+
+#: .\reader\models.py:20 .\reader\views.py:102
+msgid "Legal"
+msgstr "Gesetzlicher Grund"
+
+#: .\reader\models.py:21 .\reader\views.py:103
+msgid "Illegal"
+msgstr "Unbezahlter Freizeit"
+
+#: .\reader\models.py:51
+msgid "Invalid date/time format for event_time."
+msgstr "Falsches Datums- oder Zeitformat."
+
+#: .\reader\models.py:64
+msgid "Attendance Event"
+msgstr "Anwesenheitsereignis"
+
+#: .\reader\models.py:65
+msgid "Attendance Events"
+msgstr "Anwesenheitsereignisse"
+
+#: .\reader\templates\reader\add_attendance_event.html:6
+#: .\reader\templates\reader\events_list_old.html:11
+#: .\reader\templates\reader\events_list_old.html:49
+msgid "Add Attendance Event"
+msgstr "Anwesenheitsereignis hinzufügen"
+
+#: .\reader\templates\reader\add_attendance_event.html:10
+msgid "Selected Date"
+msgstr "Datum auswählen:"
+
+#: .\reader\templates\reader\add_attendance_event.html:72
+#: .\reader\templates\reader\events_list.html:115
+#: .\reader\templates\reader\events_list_old.html:110
+msgid "Save"
+msgstr "Speichern"
+
+#: .\reader\templates\reader\add_attendance_event.html:75
+#: .\reader\templates\reader\edit_attendance_event.html:42
+#: .\reader\templates\reader\events_list.html:118
+#: .\reader\templates\reader\events_list.html:167
+#: .\reader\templates\reader\events_list_old.html:113
+#: .\reader\templates\reader\events_list_old.html:157
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: .\reader\templates\reader\edit_attendance_event.html:5
+msgid "Edit Attendance Event"
+msgstr "Teilnahmeereignis bearbeiten"
+
+#: .\reader\templates\reader\edit_attendance_event.html:39
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#: .\reader\templates\reader\event_detail.html:8
+msgid "Unique ID:"
+msgstr "Eindeutige ID"
+
+#: .\reader\templates\reader\event_detail.html:9
+msgid "Organization:"
+msgstr "Organisation"
+
+#: .\reader\templates\reader\event_detail.html:10
+msgid "Role:"
+msgstr "Rolle"
+
+#: .\reader\templates\reader\event_detail.html:17
+msgid "Select Month:"
+msgstr "Monat auswählen:"
+
+#: .\reader\templates\reader\event_detail.html:20
+msgid "View Monthly Summary"
+msgstr "Monatliche Zusammenfassung anzeigen"
+
+#: .\reader\templates\reader\events_list.html:5
+#: .\reader\templates\reader\events_list_old.html:5
+msgid "Attendance list"
+msgstr "Anwesenheitsliste"
+
+#: .\reader\templates\reader\events_list.html:28
+#: .\reader\templates\reader\events_list.html:37
+#: .\reader\templates\reader\events_list_old.html:21
+#: .\reader\templates\reader\events_list_old.html:30
+msgid "All"
+msgstr "Alle"
+
+#: .\reader\templates\reader\events_list.html:38
+#: .\reader\templates\reader\events_list_old.html:31
+msgid "Arrival"
+msgstr "Ankunft"
+
+#: .\reader\templates\reader\events_list.html:39
+#: .\reader\templates\reader\events_list_old.html:32
+msgid "Departure"
+msgstr "Abgang"
+
+#: .\reader\templates\reader\events_list.html:43
+#: .\reader\templates\reader\events_list_old.html:36
+msgid "Event Date"
+msgstr "Datum des Ereignisses"
+
+#: .\reader\templates\reader\events_list.html:48
+#: .\reader\templates\reader\events_list_old.html:41
+msgid "Filter"
+msgstr "Filter"
+
+#: .\reader\templates\reader\events_list.html:84
+msgid "No event types available"
+msgstr "Keine Ereignistypen verfügbar"
+
+#: .\reader\templates\reader\events_list.html:91
+#: .\reader\templates\reader\events_list.html:127
+#: .\reader\templates\reader\events_list_old.html:125
+msgid "Event Time"
+msgstr "Zeit des Ereignisses"
+
+#: .\reader\templates\reader\events_list.html:130
+#: .\reader\templates\reader\events_list_old.html:128
+msgid "Timestamp"
+msgstr "Zeitstempel"
+
+#: .\reader\templates\reader\events_list.html:131
+#: .\reader\templates\reader\events_list_old.html:129
+msgid "Actions"
+msgstr "Aktion"
+
+#: .\reader\templates\reader\events_list.html:164
+#: .\reader\templates\reader\events_list_old.html:154
+msgid "Are you sure you want to delete this record?"
+msgstr "Sind Sie sicher, dass Sie diesen Datensatz löschen wollen?"
+
+#: .\reader\templates\reader\events_list.html:165
+#: .\reader\templates\reader\events_list_old.html:155
+msgid "This action cannot be undone!"
+msgstr "Diese Aktion kann nicht rückgängig gemacht werden!"
+
+#: .\reader\templates\reader\events_list.html:166
+#: .\reader\templates\reader\events_list_old.html:156
+msgid "Yes, delete!"
+msgstr "Ja, löschen!"
+
+#: .\reader\templates\reader\events_list.html:190
+#: .\reader\templates\reader\events_list_old.html:180
+msgid "No persons found."
+msgstr "Keine Personen gefunden"
+
+#: .\reader\templates\reader\select_person_and_date.html:8
+msgid "Select Person"
+msgstr "Monat auswählen:"
+
+#: .\reader\templates\reader\select_person_and_date.html:15
+msgid "Select Date"
+msgstr "Monat auswählen:"
+
+#: .\reader\templates\reader\select_person_and_date.html:18
+msgid "Proceed"
+msgstr "Fortfahren"
+
+#: .\reader\views.py:396
+msgid "All fields are required."
+msgstr "Alle Felder sind erforderlich."
+
+#: .\reader\views.py:406
+msgid "Invalid date/time format."
+msgstr "Nesprávný formát data nebo času."
+
+#: .\reader\views.py:424
+msgid "An entry for the start of working time already exists!"
+msgstr "Ein Eintrag für den Beginn der Arbeitszeit ist bereits vorhanden."
+
+#: .\reader\views.py:426
+msgid "An entry for the end of working time already exists!"
+msgstr "Záznam pro konec pracovní doby již existuje."
+
+#~ msgid "Break Start"
+#~ msgstr "Beginn der Pause"
+
+#~ msgid "Break End"
+#~ msgstr "Ende der Pause"
+
+#~ msgid "Add New Attendance Event"
+#~ msgstr "Anwesenheitsereignis hinzufügen"
+
+#~ msgid "Start of Working Hours"
+#~ msgstr "Beginn der Arbeitszeit"
+
+#~ msgid "End of Working Hours"
+#~ msgstr "Endzeit der Arbeitszeit"
+
+#~ msgid "Visit Start"
+#~ msgstr "Beginn des Besuch"
+
+#~ msgid "Visit End"
+#~ msgstr "Ende des Besuchs"
+
+#~ msgid "Reason"
+#~ msgstr "Grund"
+
+#~ msgid "Select Reason"
+#~ msgstr "Grund auswählen:"
+
+#~ msgid "Meeting"
+#~ msgstr "Sitzung"
+
+#~ msgid "Work"
+#~ msgstr "Arbeitszeit"
+
+#~ msgid "Visit"
+#~ msgstr "Besuch"
+
+#~ msgid "Save Event"
+#~ msgstr "Anwesenheitsereignis speichern"
+
+#~ msgid "End of shift"
+#~ msgstr "Ende der Schicht"

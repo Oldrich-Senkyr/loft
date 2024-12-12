@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-11 07:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\order\forms.py:17 .\order\views.py:41
+msgid "Assigned hours must be at least 0.5 hours."
+msgstr "Die zugewiesenen Stunden müssen mindestens 0,5 Stunden betragen."
+
+#: .\order\models.py:11
+msgid "Project Code"
+msgstr "Projekt-Code"
+
+#: .\order\models.py:12
+msgid "Code of the project, e.g., 25R001, 25K001."
+msgstr "Code des Projekts, z. B. 25R001, 25K001."
+
+#: .\order\models.py:16
+msgid "Project Name"
+msgstr "Projektname"
+
+#: .\order\models.py:20 .\order\models.py:86
+msgid "Description"
+msgstr "Beschreibung"
+
+#: .\order\models.py:21
+msgid "Optional description of the project."
+msgstr "Optionale Beschreibung des Projekts."
+
+#: .\order\models.py:29
+msgid "Planned Hours"
+msgstr "Geplante Stunden"
+
+#: .\order\models.py:30
+msgid "Planned number of hours for the project."
+msgstr "Geplante Anzahl von Stunden für das Projekt."
+
+#: .\order\models.py:36
+msgid "Worked Hours"
+msgstr "Geleistete Stunden"
+
+#: .\order\models.py:37
+msgid "Worked number of hours on the project."
+msgstr "Geleistete Stunden"
+
+#: .\order\models.py:41
+msgid "New"
+msgstr "Neu"
+
+#: .\order\models.py:42
+msgid "In Progress"
+msgstr "In Arbeit"
+
+#: .\order\models.py:43
+msgid "Completed"
+msgstr "Abgeschlossen"
+
+#: .\order\models.py:44
+msgid "Canceled"
+msgstr "Abgebrochen"
+
+#: .\order\models.py:47
+msgid "Status"
+msgstr "Status"
+
+#: .\order\models.py:48
+msgid "Project status: 0 = new, 1 = in progress, 2 = completed, 3 = canceled."
+msgstr "Projektstatus: 0 = neu, 1 = in Arbeit, 2 = abgeschlossen, 3 = abgebrochen."
+
+#: .\order\models.py:52 .\order\models.py:61 .\order\models.py:78
+#: .\order\templates\order\workday_assignments.html:22
+msgid "Project"
+msgstr "Projekt"
+
+#: .\order\models.py:53
+msgid "Projects"
+msgstr "Projekte"
+
+#: .\order\models.py:60 .\order\models.py:77
+msgid "Person"
+msgstr "Person"
+
+#: .\order\models.py:62
+msgid "Assigned At"
+msgstr "Zugewiesen am"
+
+#: .\order\models.py:63
+msgid "Role in Project"
+msgstr "Rolle im Projekt"
+
+#: .\order\models.py:66
+msgid "Person-Project Assignment"
+msgstr "Person - Projektzuordnung"
+
+#: .\order\models.py:67
+msgid "Person-Project Assignments"
+msgstr "Person - Projektzuordnungen"
+
+#: .\order\models.py:79
+msgid "Work Date"
+msgstr "Datum der Arbeit"
+
+#: .\order\models.py:83
+msgid "Hours Allocated"
+msgstr "Zugewiesene Stunden"
+
+#: .\order\models.py:84
+msgid "Number of hours allocated to the project on the given date."
+msgstr "Anzahl der Stunden, die dem Projekt am angegebenen Datum zugewiesen wurden."
+
+#: .\order\models.py:86
+msgid "Description of the work done."
+msgstr "Beschreibung der geleisteten Arbeit."
+
+#: .\order\models.py:87
+msgid "Created At"
+msgstr "Erstellt am"
+
+#: .\order\models.py:88
+msgid "Updated At"
+msgstr "Aktualisiert am"
+
+#: .\order\models.py:91
+msgid "Work Log"
+msgstr "Arbeitsprotokoll"
+
+#: .\order\models.py:92
+msgid "Work Logs"
+msgstr "Arbeitsprotokollen"
+
+#: .\order\models.py:95
+msgid "Work log for {} on {} for project {}"
+msgstr "Arbeitsprotokoll für {} am {} für das Projekt {}"
+
+#: .\order\templates\order\workday_assignments.html:7
+msgid "Work Assignments for"
+msgstr "Arbeitszuweisungen für"
+
+#: .\order\templates\order\workday_assignments.html:10
+msgid "Total Hours:"
+msgstr "Gesamtstunden:"
+
+#: .\order\templates\order\workday_assignments.html:11
+msgid "Assigned Hours:"
+msgstr "Zugewiesene Stunden:"
+
+#: .\order\templates\order\workday_assignments.html:12
+msgid "Unassigned Hours:"
+msgstr "Nicht zugewiesene Stunden:"
+
+#: .\order\templates\order\workday_assignments.html:18
+msgid "Existing Assignments"
+msgstr "Vorhandene Zuweisungen"
+
+#: .\order\templates\order\workday_assignments.html:23
+msgid "Hours Assigned"
+msgstr "Zugewiesene Stunden"
+
+#: .\order\templates\order\workday_assignments.html:24
+msgid "Work Performed"
+msgstr "Durchgeführte Arbeit"
+
+#: .\order\templates\order\workday_assignments.html:36
+msgid "No assignments yet."
+msgstr "Noch keine Zuweisungen."
+
+#: .\order\templates\order\workday_assignments.html:42
+msgid "Add New Assignment"
+msgstr "Neue Zuweisung hinzufügen"
+
+#: .\order\templates\order\workday_assignments.html:46
+msgid "Add Assignment"
+msgstr "Zuweisung hinzufügen"
+
+#: .\order\templates\order\workday_assignments.html:51
+msgid "There are unassigned hours. Please ensure all hours are accounted for."
+msgstr ""
+"Es gibt noch nicht zugewiesene Stunden. Bitte vergewissern Sie sich, dass "
+"alle Stunden verbucht wurden.“"
+
+#: .\order\views.py:35
+#, python-format
+msgid "Cannot assign more hours than available. Remaining: %(hours)s"
+msgstr ""
+"Es können nicht mehr Stunden zugewiesen werden als verfügbar sind. "
+"Verbleibend: %(hours)s“"
+
+#: .\order\views.py:52
+msgid "Assignment added successfully."
+msgstr "Zuweisung erfolgreich hinzugefügt."
+
+#: .\order\views.py:54
+msgid "Assignment updated successfully."
+msgstr "Zuweisung erfolgreich aktualisiert."

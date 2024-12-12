@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Overview" %}{% endblock %}
+
+
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">Attendance Events for {{ person.name }} on {{ selected_date }}</h1>
+
+<div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow">
+        <thead>
+            <tr class="bg-gray-100">
+                <th class="py-3 px-6 text-left font-medium text-gray-700">Event Time</th>
+                <th class="py-3 px-6 text-left font-medium text-gray-700">Event Type</th>
+                <th class="py-3 px-6 text-left font-medium text-gray-700">Arrival Reason</th>
+                <th class="py-3 px-6 text-left font-medium text-gray-700">Departure Reason</th>
+            </tr>
+        </thead>
+        <tbody class="text-gray-600">
+            {% for event in events %}
+                <tr class="border-t border-gray-200 {% cycle 'bg-white' 'bg-gray-50' %}">
+                    <td class="py-3 px-6">{{ event.event_time|time:"H:i" }}</td>
+                    <td class="py-3 px-6">{{ event.get_event_type_display }}</td>
+                    <td class="py-3 px-6">{{ event.arrival_reason }}</td>
+                    <td class="py-3 px-6">{{ event.departure_reason }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

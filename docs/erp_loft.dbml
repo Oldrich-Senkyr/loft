@@ -1,0 +1,115 @@
+Table Person {
+  id integer [pk, increment, note: "ID osoby"]
+  unique_id varchar(10) [unique, not null, note: "Něco jako číslování a odlišení zaměstnaců např ET10, EV10"]
+  display_name varchar(25) [default: "Alias", note: "Přezdívka"]
+  first_name varchar(25) [not null, default: "Nomen", note: "Křestní jméno"]
+  second_name varchar(25) [not null, default: "Omen", note: "Příjmení"]
+  organization varchar(100) [not null, note: "Organizace, ve které osoba pracuje"]
+  role integer [not null, default: 1, note: "Role osoby (1 = Employee, 2 = Guest, 3 = Contractor, 4 = Supplier, 5 = Customer, 6 = Other)"]
+  title_before varchar(10) [default: "", note: "Titul před jménem (např. Dr., Ing.)"]
+  title_after varchar(10) [default: "", note: "Titul za jménem (např. Ph.D., MBA)"]
+
+  Note: "Person"
+}
+
+Table Contact [note: "Tabulka uchovává kontakty na osoby"] {
+    id integer [pk, increment, note: "ID kontaktu"]
+    person_id integer [ref: > Person.id, note: "Odkaz na osobu, tabulka person"]
+    email varchar(100) [note: "Emailová adresa / Email address"]
+    phone varchar(20) [note: "Telefonní číslo / Phone number"]
+    position varchar(50) [note: "Pozice / Position"]
+    is_primary boolean [note: "Primární kontakt: true = Ano / Yes, false = Ne / No"]
+    created_at timestamp [note: "Datum vytvoření / Created at"]
+    updated_at timestamp [note: "Datum aktualizace / Updated at"]
+}
+
+
+
+Table WorkDay {
+  id integer [primary key, note: "Jedinečný identifikátor každého pracovního dne."]
+  employee_id integer [ref: > Person.id, not null, note: "Odkaz na zaměstnance, ke kterému pracovní den patří."]
+  date date [not null, note: "Datum, pro které se pracovní doba vztahuje."]
+  work_start decimal(5, 2) [not null, note: "Začátek pracovní doby zaokrouhlen na 5 minut"]
+  work_end  decimal(5, 2) [not null, note: "Konec pracovní doby zaokrouhlen na 5 minut."]
+  work_hours decimal(5, 2) [not null, note: "Celkový počet odpracovaných hodin za daný den."]
+  legal_break decimal(5, 2) [default: 0, not null, note: "Celkový čas legálních přestávek (např. oběd) v hodinách."]
+  illegal_break decimal(5, 2) [default: 0, not null, note: "Celkový čas nelegálních přestávek (např. neoprávněné opuštění pracoviště) v hodinách."]
+  assigned_hours decimal(5, 2) [not null, note: "Celkový počet přiřazených hodin hodin za daný den."]
+  indexes {
+    (employee_id, date) [unique, note: "Zajišťuje, že pro jednoho zaměstnance může být uložen maximálně jeden záznam pro konkrétní datum."]
+  }
+
+  Note: "Tabulka WorkDay obsahuje souhrnné údaje o pracovní době zaměstnanců za konkrétní den. Je pomocná a automaticky vypočítávána."
+}
+
+
+
+Table Project {
+  id integer [primary key]
+  code varchar(9) [not null, note: "Kod projektu napr 25R001, 25K001"]
+  name varchar(70) [not null, note: "Název projektu"]
+  description text [note: "Krátký popis projektu"]
+  planned_hours   decimal(10,2) [not null, default: 0, note: "Plánovaný počet hodin na zakázku"]
+  worked_hours    decimal(10,2) [not null, default: 0, note: "Odpracovaný počet hodin na zakázce"]
+  status integer [note: "Status: 0 = new / 1 = in_progress, 2 = completed, 3 = canceled"]
+  
+  Note: "Project"
+}
+
+
+Table PersonProject {
+  id integer [primary key, note: "Primární klíč vazby"]
+  person_id integer [not null, ref: > Person.id, note: "Vazba na osobu (Person.id)"]
+  project_id integer [not null, ref: > Project.id, note: "Vazba na projekt (Project.id)"]
+  assigned_at datetime [default: `now()`, note: "Datum přiřazení osoby k projektu"]
+  role_in_project varchar(50) [note: "Role osoby v rámci projektu (např. Manager, Worker)"]
+
+  Note: "Vazba mezi osobami a projekty (Person ↔ Project) - Přiřazení provádějí zaměstnanci"
+}
+
+Table AttendanceEvent {
+  id integer [primary key, note: "Jedinečný identifikátor události"]
+  person_id integer [ref: > Person.id, not null, note: "Odkaz na osobu, které se událost týká"]
+  event_type integer [not null, note: "Typ události (např. příchod, odchod, přerušení)"]
+  event_time timestamp [default: 'timezone.now', not null, note: "Čas, kdy k události došlo"]
+  timestamp timestamp [default: 'timezone.now', not null, note: "Čas zaznamenání události"]
+  departure_reason integer [default: 0, not null, note: "Důvod odchodu (např. konec směny, přestávka)"]
+  source_id integer [ref: > Source.id, not null, note: "Odkaz na zdroj události (např. čtečka nebo klávesnice)"]
+
+  Note: "Attendance Event - příchod, odchod, přerušení zaznamená čtečka nebo klávesnice"
+}
+
+Table Source {
+  id integer [primary key, note: "Jedinečné ID zdroje"]
+  alias varchar(50) [unique, not null, note: "Popis zdroje (např. 'Klávesnice v kanceláři')"]
+  location varchar(50) [not null, note: "Umístění zdroje (např. 'Kancelář', 'Dílna')"]
+  device_type varchar(20) [not null, note: "Typ zařízení (např. 'klávesnice', 'čtečka karet')"]
+  Note: "Tabulka pro evidenci zdrojů událostí (např. čtečky karet, klávesnice)."
+}
+
+Table WorkLog {
+  id int [pk, increment, note: "Primární klíč - jedinečný identifikátor záznamu"]
+  person_id int [not null, ref: > Person.id, note: "Zaměstnanec, na kterého se vztahuje tento pracovní záznam"]
+  project_id int [not null, ref: > Project.id, note: "Zakázka, ke které je tento pracovní záznam přiřazen"]
+  work_date date [not null, note: "Datum, kdy práce na zakázce byla vykonána"]
+  hours_allocated decimal(5,2) [not null, note: "Počet hodin přidělený na zakázku"]
+  description text [note: "Popis vykonané práce"]
+  created_at datetime [default: `now()`, note: "Datum a čas, kdy byl tento záznam vytvořen"]
+  updated_at datetime [default: `now()`, note: "Datum a čas, kdy byl tento záznam naposledy aktualizován"]
+
+  Note: "Tabulka WorkLog uchovává pracovní záznamy zaměstnanců přiřazené k projektům."
+}
+
+
+
+Table AccessCard {
+  id integer [pk, increment, note: "Jedinečný identifikátor přístupové karty"]
+  person_id integer [ref: > Person.id, not null, note: "Odkaz na osobu, která má kartu"]
+  access_card_number varchar(20) [unique, not null, note: "Číslo přístupové karty"]
+  access_pin varchar(6) [not null, note: "PIN pro přístup (maximálně 6 číslic)"]
+  card_type varchar(50) [note: "Typ karty (např. 'Hlavní', 'Návštěvník')"]
+  issued_at timestamp [default: 'timezone.now', note: "Datum vydání karty"]
+  expired_at timestamp [note: "Datum vypršení platnosti karty"]
+
+  Note: "Tabulka pro evidenci přístupových karet přiřazených k osobám."
+}

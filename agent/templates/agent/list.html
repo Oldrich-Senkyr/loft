@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <div class="bg-gray-100 p-5">
+        <h1 class="text-2xl font-bold mb-5">{% trans "Persons List" %}  </h1>
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <ul class="space-y-4">
+                {% for person in persons %}
+                    <li class="flex justify-between items-center p-2 border-b hover:bg-gray-100">
+                        <a href="{% url 'agent:person_detail' person.pk %}" class="flex-1 text-left text-blue-600 hover:underline">
+                            <span class="font-semibold">{{ person.last_name }} {{ person.first_name }}</span>: 
+                            <span class="text-gray-600">{{ person.organization }}</span>, 
+                            <span class="text-gray-500">{{ person.get_role_display }}</span>
+                        </a>
+                    </li>
+                {% empty %}
+                    <li class="p-4 text-center text-gray-500">{% trans "No persons found." %}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% if debug %}
+        <div style="position: fixed; bottom: 10px; right: 10px; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 5px;">
+            {{ template_name }}
+        </div>
+    {% endif %}
+{% endblock %}
+

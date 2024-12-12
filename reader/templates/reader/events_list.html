@@ -1,0 +1,195 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold mb-5">{% trans "Attendance list" %}</h1>
+
+    {% if messages %}
+    <div class="mb-4">
+        {% for message in messages %}
+            <div class="flex items-center p-4 rounded-md shadow-md 
+                        {% if 'error' in message.tags %}bg-red-400 text-red-800{% endif %}
+                        {% if 'success' in message.tags %}bg-green-400 text-green-800{% endif %}
+                        {% if 'info' in message.tags %}bg-yellow-400 text-yellow-800{% endif %}">
+                <span class="font-medium">
+                    {{ message }}
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+     <!-- Form for filtering attendance events -->
+    <form method="get" class="bg-white shadow-md rounded-lg p-4 mb-6">
+        <div class="grid grid-cols-4 gap-4">
+            <div>
+                <label class="block font-semibold text-gray-700" for="person">{% trans "Person" %}</label>
+                <select name="person" id="person" class="w-full p-2 border rounded">
+                    <option value="">{% trans "All" %}</option>
+                    {% for p in persons %}
+                    <option value="{{ p.unique_id }}" {% if request.GET.person == p.unique_id %}selected{% endif %}>{{ p.last_name }} {{ p.first_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="block font-semibold text-gray-700" for="event_type">{% trans "Event Type" %}</label>
+                <select name="event_type" id="event_type" class="w-full p-2 border rounded">
+                    <option value="">{% trans "All" %}</option>
+                    <option value="arrival" {% if request.GET.event_type == "arrival" %}selected{% endif %}>{% trans "Arrival" %}</option>
+                    <option value="departure" {% if request.GET.event_type == "departure" %}selected{% endif %}>{% trans "Departure" %}</option>
+                </select>
+            </div>
+            <div>
+                <label class="block font-semibold text-gray-700" for="event_date">{% trans "Event Date" %}</label>
+                <input type="date" name="event_date" id="event_date" class="w-full p-2 border rounded" 
+                       value="{{ request.GET.event_date }}">
+            </div>
+            <div class="flex items-end">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">{% trans "Filter" %}</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Form for adding new attendance event -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+        <!-- Error message -->
+       
+    
+    <form method="post"  action="{% url 'reader:create_attendance_event' %}" class="bg-white shadow-md rounded-lg p-6 mb-6">
+        {% csrf_token %}
+        <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">   
+        <div class="grid grid-cols-4 gap-4">
+            <!-- Person field -->
+            <div class="col-span-1">
+                <label for="person" class="block font-semibold text-gray-700">{{ _('Person') }}</label>
+                <select id="person" name="person" class="block w-full border-gray-300 rounded-md">
+                    {% for person in persons %}
+                        <option value="{{ person.id }}">{{ person.name_second }} {{ person.name_first }}</option>
+                    {% endfor %}
+                </select>
+                {% if error_message and not persons %}
+                    <p class="text-red-500 text-sm">{{ error_message }}</p>
+                {% endif %}
+            </div>
+            
+            <!-- Event Type field -->
+            <div class="col-span-1">
+                <label for="event_type" class="block font-semibold text-gray-700">{{ _('Event Type') }}</label>
+                <select id="event_type" name="event_type" class="block w-full border-gray-300 rounded-md">
+                    {% if event_types %}
+                        {% for key, label in event_types.items %}
+                            <option value="{{ key }}">{{ label }}</option>
+                        {% endfor %}
+                    {% else %}
+                        <option disabled>{% trans "No event types available" %}</option>
+                    {% endif %}
+                </select>
+            </div>
+            
+            <!-- Event Time field -->
+            <div class="col-span-1">
+                <label for="event_time" class="block font-semibold text-gray-700">{{ _('Event Time') }}</label>
+                <input
+                    type="datetime-local"
+                    id="event_time"
+                    name="event_time"
+                    class="block w-full border-gray-300 rounded-md"
+                >
+            </div>
+            
+           <!-- Departure Reason field -->
+           <div class="col-span-1">
+                <label for="departure_reason" class="block font-semibold text-gray-700">{{ _('Departure Reason') }}</label>
+                <select id="departure_reason" name="departure_reason" class="block w-full border-gray-300 rounded-md">
+                    {% for key, label in departure_reasons.items %}
+                        <option value="{{ key }}" {% if key == "illegal" %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+           
+            
+        </div>
+        
+        <div class="mt-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                {% trans "Save" %}
+            </button>
+            <a href="{% url 'reader_i18n:events_list' %}" class="ml-4 text-blue-500 hover:underline">
+                {% trans "Cancel" %}
+            </a>
+        </div>
+    </form>
+
+    <!-- List of attendance events -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="grid grid-cols-6 gap-4 p-2 border-b font-semibold text-gray-700">
+            <span class="text-left">{% trans "Person" %}</span>
+            <span>{% trans "Event Time" %}</span>
+            <span>{% trans "Event Type" %}</span>
+            <span>{% trans "Departure Reason" %}</span>
+            <span>{% trans "Timestamp" %}</span>
+            <span>{% trans "Actions" %}</span> <!-- Sloupec pro akce jako smazání -->
+        </div>
+        
+        <ul class="space-y-4">
+            {% for event in events %}
+            <li class="p-2 border-b hover:bg-gray-100">
+                <div class="grid grid-cols-6 gap-4">
+                    <span class="font-semibold text-left">{{ event.person.name_second }} {{ event.person.name_first }}</span>
+                    <span class="text-gray-600">{{ event.event_time }}</span>
+                    <span class="text-gray-500">{{ event.get_event_type_display }}</span>
+                    <span class="text-gray-600">{{ event.get_departure_reason_display }}</span>
+                    <span class="text-gray-500">{{ event.timestamp }}</span>
+
+                    <!-- Akce -->
+                    <div class="flex space-x-4">
+                        <!-- Tlacítko pro úpravu -->
+                        <a href="{% url 'reader_i18n:edit_attendance_event' event.id %}?next={{ request.get_full_path|urlencode }}" class="text-blue-500 hover:text-blue-700">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <!-- Formulář pro smazání -->
+                        <form id="delete-form-{{ event.id }}" action="{% url 'reader_i18n:delete_event' event.id %}" method="post" class="text-red-500">
+                            {% csrf_token %}
+                            <!-- Hidden input to pass the redirect URL -->
+                            <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
+                            <button type="button" class="hover:text-red-700" onclick="confirmDelete({{ event.id }})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <script>
+                        const swalTexts = {
+                            title: "{% trans 'Are you sure you want to delete this record?' %}",
+                            text: "{% trans 'This action cannot be undone!' %}",
+                            confirmButton: "{% trans 'Yes, delete!' %}",
+                            cancelButton: "{% trans 'Cancel' %}"
+                        };
+
+                        function confirmDelete(eventId) {
+                            Swal.fire({
+                                title: swalTexts.title,
+                                text: swalTexts.text,
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#d33',
+                                cancelButtonColor: '#3085d6',
+                                confirmButtonText: swalTexts.confirmButton,
+                                cancelButtonText: swalTexts.cancelButton
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById(`delete-form-${eventId}`).submit();
+                                }
+                            });
+                        }
+                    </script>
+                </div>
+            </li>
+            {% empty %}
+            <li class="p-4 text-center text-gray-500">{% trans "No persons found." %}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+{% endblock %}

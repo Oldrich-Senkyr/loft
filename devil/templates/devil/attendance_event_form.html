@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container mx-auto p-5">
+    <h1 class="text-2xl font-bold mb-5">{% trans "Add Attendance Event" %}</h1>
+    
+    <form method="post" class="bg-white shadow-md rounded-lg p-6">
+        {% csrf_token %}
+        
+        <div class="grid grid-cols-4 gap-4">
+            <!-- Person field -->
+            <div class="col-span-1">
+                <label for="person" class="block font-semibold text-gray-700">{{ _('Person') }}</label>
+                <select id="person" name="person" class="block w-full border-gray-300 rounded-md">
+                    {% for person in persons %}
+                        <option value="{{ person.id }}">{{ person.name }}</option>
+                    {% endfor %}
+                </select>
+                {% if error_message and not persons %}
+                    <p class="text-red-500 text-sm">{{ error_message }}</p>
+                {% endif %}
+            </div>
+            
+            <!-- Event Type field -->
+            <div class="col-span-1">
+                <label for="event_type" class="block font-semibold text-gray-700">{{ _('Event Type') }}</label>
+                <select id="event_type" name="event_type" class="block w-full border-gray-300 rounded-md">
+                    {% for key, label in event_types %}
+                        <option value="{{ key }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- Event Time field -->
+            <div class="col-span-1">
+                <label for="event_time" class="block font-semibold text-gray-700">{{ _('Event Time') }}</label>
+                <input
+                    type="datetime-local"
+                    id="event_time"
+                    name="event_time"
+                    class="block w-full border-gray-300 rounded-md"
+                >
+            </div>
+            
+            <!-- Departure Reason field -->
+            <div class="col-span-1">
+                <label for="departure_reason" class="block font-semibold text-gray-700">{{ _('Departure Reason') }}</label>
+                <select id="departure_reason" name="departure_reason" class="block w-full border-gray-300 rounded-md">
+                    {% for key, label in departure_reasons %}
+                        <option value="{{ key }}" {% if key == "illegal" %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                {% trans "Save" %}
+            </button>
+            <a href="{% url 'reader:events_list' %}" class="ml-4 text-blue-500 hover:underline">
+                {% trans "Cancel" %}
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

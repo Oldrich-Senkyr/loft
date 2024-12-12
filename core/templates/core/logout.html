@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Log out{% endblock %}
+
+
+{% block content %}
+<div class="w-1/2 my-6 mx-auto p-6 text-xl bg-gray-100 rounded-xl">
+     <h1 class="mb-6 text-3xl">Log out</h1>
+
+    <form method="post" action=".">
+        {% csrf_token %}
+        <p>Are you sure you want to logout?</p>
+        <button class="mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+    </form>
+</div>
+{% endblock %}

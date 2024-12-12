@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-22 14:14+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\devil\attendance_views\views.py:15
+msgid "All fields are required."
+msgstr ""
+
+#: ⁨.\devil\templates\devil\attendance_event_form copy.html⁩:15
+msgid "Create Attendance Event"
+msgstr ""
+
+#: ⁨.\devil\templates\devil\attendance_event_form copy.html⁩:19
+#: .\devil\templates\devil\attendance_event_form.html:13
+msgid "Person"
+msgstr ""
+
+#: ⁨.\devil\templates\devil\attendance_event_form copy.html⁩:27
+#: .\devil\templates\devil\attendance_event_form.html:26
+msgid "Event Type"
+msgstr ""
+
+#: ⁨.\devil\templates\devil\attendance_event_form copy.html⁩:35
+#: .\devil\templates\devil\attendance_event_form.html:36
+msgid "Event Time"
+msgstr ""
+
+#: ⁨.\devil\templates\devil\attendance_event_form copy.html⁩:44
+#: .\devil\templates\devil\attendance_event_form.html:47
+msgid "Departure Reason"
+msgstr ""
+
+#: ⁨.\devil\templates\devil\attendance_event_form copy.html⁩:55
+msgid "Submit"
+msgstr ""
+
+#: .\devil\templates\devil\attendance_event_form.html:5
+msgid "Add Attendance Event"
+msgstr ""
+
+#: .\devil\templates\devil\attendance_event_form.html:58
+msgid "Save"
+msgstr ""
+
+#: .\devil\templates\devil\attendance_event_form.html:61
+msgid "Cancel"
+msgstr ""

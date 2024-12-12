@@ -1,0 +1,80 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<!-- Form for adding new attendance event -->
+<div class="container mx-auto p-5">
+    <h1 class="text-2xl font-bold mb-5">{% trans "Add Attendance Event" %}</h1>
+    
+    <!-- Display the selected date -->
+    {% if event_date_str %}
+        <p class="text-gray-600 mb-4">{% trans "Selected Date" %}: {{ event_date_str|date:"d.m.Y" }}</p>
+    {% endif %}
+
+    <form method="post" class="bg-white shadow-md rounded-lg p-6">
+        {% csrf_token %}
+    
+        <div class="grid grid-cols-4 gap-4">
+            <!-- Person field with label above -->
+            <div class="col-span-1">
+                <label for="id_person" class="block font-semibold">{{ form.person.label }}</label>
+                {{ form.person }}
+                {% if form.person.errors %}
+                    <div class="text-red-500 text-sm">
+                        {% for error in form.person.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+    
+            <!-- Event Type field with label above -->
+            <div class="col-span-1">
+                <label for="id_event_type" class="block font-semibold">{{ form.event_type.label }}</label>
+                {{ form.event_type }}
+                {% if form.event_type.errors %}
+                    <div class="text-red-500 text-sm">
+                        {% for error in form.event_type.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+    
+            <!-- Event Time field with label above -->
+            <div class="col-span-1">
+                <label for="id_event_time" class="block font-semibold">{{ form.event_time.label }}</label>
+                <input type="datetime-local" name="event_time" value="{{ form.event_time.value|default:''|date:'Y-m-d\\TH:i' }}" required id="id_event_time">
+                {% if form.event_time.errors %}
+                    <div class="text-red-500 text-sm">
+                        {% for error in form.event_time.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Departure Reason field with label above -->
+            <div class="col-span-1">
+                <label for="id_departure_reason" class="block font-semibold">{{ form.departure_reason.label }}</label>
+                {{ form.departure_reason }}
+                {% if form.departure_reason.errors %}
+                    <div class="text-red-500 text-sm">
+                        {% for error in form.departure_reason.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    
+        <div class="mt-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                {% trans "Save" %}
+            </button>
+            <a href="{% url 'reader_i18n:events_list' %}" class="ml-4 text-blue-500 hover:underline">
+                {% trans "Cancel" %}
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

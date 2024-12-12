@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<body class="bg-gray-100 p-5">
+    <body class="bg-gray-100 p-5">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h1 class="text-2xl font-bold mb-4">{{ person.name }}</h1>
+            <p><strong>{% trans "Unique ID:" %}</strong> {{ person.unique_id }}</p>
+            <p><strong>{% trans "Organization:" %}</strong> {{ person.organization }}</p>
+            <p><strong>{% trans "Role:" %}</strong> {{ person.get_role_display }}</p>
+    
+            <!-- Formulář pro výběr měsíce -->
+            {% now "Y" as current_year %}
+            {% now "m" as current_month %}
+            <form action="{% url 'attendance_summary' person.id %}" method="post" class="mt-4">
+                {% csrf_token %}
+                <label for="month" class="block mb-2 font-semibold">{% trans "Select Month:" %}</label>
+                <input type="month" id="month" name="month" value="{{ current_year }}-{{ current_month }}" class="border rounded p-2">
+                <button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    {% trans "View Monthly Summary" %}
+                </button>
+            </form>
+        </div>
+    </body>
+{% endblock  %}

@@ -1,0 +1,231 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-11 07:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\eval\admin.py:9 .\eval\admin.py:32 .\eval\models.py:99
+msgid "Work Day Assignment"
+msgstr ""
+
+#: .\eval\admin.py:10 .\eval\admin.py:33 .\eval\models.py:100
+msgid "Work Day Assignments"
+msgstr ""
+
+#: .\eval\admin.py:20 .\eval\models.py:65 .\eval\models.py:76
+msgid "Work Day"
+msgstr ""
+
+#: .\eval\admin.py:21 .\eval\models.py:66
+msgid "Work Days"
+msgstr ""
+
+#: .\eval\models.py:19 ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:7
+#: ⁨.\eval\templates\eval\workdays_list copy.html⁩:7
+#: .\eval\templates\eval\workdays_list.html:7
+msgid "Employee"
+msgstr ""
+
+#: .\eval\models.py:21 .\eval\templates\eval\monthly_summary.html:19
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:9
+#: ⁨.\eval\templates\eval\workdays_list copy.html⁩:8
+#: .\eval\templates\eval\workdays_list.html:9
+msgid "Date"
+msgstr ""
+
+#: .\eval\models.py:23 .\eval\templates\eval\monthly_summary.html:20
+#: .\eval\templates\eval\workdays_list.html:10
+msgid "Start Time"
+msgstr ""
+
+#: .\eval\models.py:26
+msgid "Time when the employee started work."
+msgstr ""
+
+#: .\eval\models.py:29 .\eval\templates\eval\monthly_summary.html:21
+#: .\eval\templates\eval\workdays_list.html:11
+msgid "End Time"
+msgstr ""
+
+#: .\eval\models.py:32
+msgid "Time when the employee finished work."
+msgstr ""
+
+#: .\eval\models.py:37 ⁨.\eval\templates\eval\workdays_list copy.html⁩:9
+#: .\eval\templates\eval\workdays_list.html:12
+msgid "Total Work Hours"
+msgstr ""
+
+#: .\eval\models.py:42 ⁨.\eval\templates\eval\workdays_list copy.html⁩:10
+#: .\eval\templates\eval\workdays_list.html:13
+msgid "Total Legal Break Hours"
+msgstr ""
+
+#: .\eval\models.py:44
+msgid "Total time for legal breaks in hours."
+msgstr ""
+
+#: .\eval\models.py:49 ⁨.\eval\templates\eval\workdays_list copy.html⁩:11
+#: .\eval\templates\eval\workdays_list.html:14
+msgid "Total Illegal Break Hours"
+msgstr ""
+
+#: .\eval\models.py:51
+msgid "Total time for unauthorized breaks in hours."
+msgstr ""
+
+#: .\eval\models.py:57
+msgid "Assigned hours"
+msgstr ""
+
+#: .\eval\models.py:59
+msgid "Total time Assigned hours."
+msgstr ""
+
+#: .\eval\models.py:77
+msgid "The workday to which this assignment belongs."
+msgstr ""
+
+#: .\eval\models.py:82
+msgid "Project"
+msgstr ""
+
+#: .\eval\models.py:83
+msgid "The project to which the hours are assigned."
+msgstr ""
+
+#: .\eval\models.py:88
+msgid "Assigned Hours"
+msgstr ""
+
+#: .\eval\models.py:89
+msgid "The number of hours assigned to this project."
+msgstr ""
+
+#: .\eval\models.py:93
+msgid "Work Performed"
+msgstr ""
+
+#: .\eval\models.py:94
+msgid "Description of the work performed."
+msgstr ""
+
+#: .\eval\templates\eval\attendance_events.html:3
+msgid "Overview"
+msgstr ""
+
+#: .\eval\templates\eval\monthly_summary.html:10
+msgid "Unique ID:"
+msgstr ""
+
+#: .\eval\templates\eval\monthly_summary.html:11
+msgid "Organization:"
+msgstr ""
+
+#: .\eval\templates\eval\monthly_summary.html:12
+msgid "Role:"
+msgstr ""
+
+#: .\eval\templates\eval\monthly_summary.html:15
+msgid "Monthly Work Summary"
+msgstr ""
+
+#: .\eval\templates\eval\monthly_summary.html:22
+msgid "Hours Worked"
+msgstr ""
+
+#: .\eval\templates\eval\monthly_summary.html:23
+msgid "Legal Break Hours"
+msgstr ""
+
+#: .\eval\templates\eval\monthly_summary.html:24
+msgid "Illegal Break Hours"
+msgstr ""
+
+#: .\eval\templates\eval\monthly_summary.html:32
+#: .\eval\templates\eval\monthly_summary.html:33
+msgid "N/A"
+msgstr ""
+
+#: .\eval\templates\eval\monthly_summary.html:40
+msgid "Total for Month"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:8
+msgid "Day"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:10
+msgid "Work Hours"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:11
+msgid "Legal Break"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:12
+msgid "Illegal Break"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:13
+#: ⁨.\eval\templates\eval\workdays_list copy.html⁩:12
+#: .\eval\templates\eval\workdays_list.html:15
+msgid "Actions"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:46
+#: ⁨.\eval\templates\eval\workdays_list copy.html⁩:44
+#: .\eval\templates\eval\workdays_list.html:50
+msgid "Are you sure you want to delete this record?"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:47
+#: ⁨.\eval\templates\eval\workdays_list copy.html⁩:45
+#: .\eval\templates\eval\workdays_list.html:51
+msgid "This action cannot be undone!"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:48
+#: ⁨.\eval\templates\eval\workdays_list copy.html⁩:46
+#: .\eval\templates\eval\workdays_list.html:52
+msgid "Yes, delete!"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:49
+#: ⁨.\eval\templates\eval\workdays_list copy.html⁩:47
+#: .\eval\templates\eval\workdays_list.html:53
+msgid "Cancel"
+msgstr ""
+
+#: ⁨.\eval\templates\eval\workdays_list copy 2.html⁩:72
+#: ⁨.\eval\templates\eval\workdays_list copy.html⁩:70
+#: .\eval\templates\eval\workdays_list.html:76
+msgid "No workdays found."
+msgstr ""
+
+#: .\eval\templates\eval\workdays_list.html:8
+msgid "Day of Week"
+msgstr ""
+
+#: ⁨.\eval\views copy.py⁩:419 ⁨.\eval\views copy.py⁩:451 ⁨.\eval\views copy.py⁩:477
+#: .\eval\views.py:448 .\eval\views.py:480 .\eval\views.py:506
+msgid "Work Days List"
+msgstr ""
+
+#: ⁨.\eval\views copy.py⁩:483 .\eval\views.py:512
+msgid "Person Details"
+msgstr ""

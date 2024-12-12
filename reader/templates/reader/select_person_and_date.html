@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+    <label for="id_person">{% trans "Select Person" %}</label>
+    <select name="person" id="id_person">
+        {% for p in persons %}
+        <option value="{{ p.id }}">{{ p.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="id_event_date">{% trans "Select Date" %}</label>
+    <input type="date" name="event_date" id="id_event_date">
+
+    <button type="submit">{% trans "Proceed" %}</button>
+</form>
+{% endblock %}
