@@ -63,3 +63,28 @@ class Person(models.Model):
         return f"{self.last_name} {self.first_name} ({self.get_role_display()})"
     
     
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+
+class Division(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+    
+
+class CustomUser(AbstractUser):
+    ROLE_CHOICES = [
+        ('manager', _('Manager')),  # Lazy preklad názvu role
+        ('division_manager', _('Division Manager')),  # Lazy preklad názvu role
+        ('employee', _('Employee')),  # Lazy preklad názvu role
+    ]
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='employee')
+    divisions = models.ManyToManyField(Division, blank=True)  # Division Manager muže mít více divizí
+
+    def is_manager(self):
+        return self.role == 'manager'
+
+    def is_division_manager(self):
+        return self.role == 'division_manager'    
