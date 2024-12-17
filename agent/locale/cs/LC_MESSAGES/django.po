@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-11 07:48+0100\n"
+"POT-Creation-Date: 2024-12-17 21:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,88 +19,177 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
 "<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: .\agent\models.py:9
+#: .\agent\models.py:12
 msgid "Person"
 msgstr "Osoba"
 
-#: .\agent\models.py:10
+#: .\agent\models.py:13
 msgid "Persons"
 msgstr "Osoby"
 
-#: .\agent\models.py:13
-msgid "Dr."
-msgstr "Dr."
+#: .\agent\models.py:16
+msgid "Bc."
+msgstr ""
 
-#: .\agent\models.py:14
+#: .\agent\models.py:17
+msgid "BcA."
+msgstr ""
+
+#: .\agent\models.py:18
+msgid "RNDr."
+msgstr ""
+
+#: .\agent\models.py:19
+msgid "MUDr."
+msgstr ""
+
+#: .\agent\models.py:20
+msgid "JUDr."
+msgstr ""
+
+#: .\agent\models.py:21
+msgid "PhDr."
+msgstr ""
+
+#: .\agent\models.py:22
 msgid "Ing."
 msgstr "Ing."
 
-#: .\agent\models.py:15
-msgid "Ph.D."
-msgstr "Ph.D."
+#: .\agent\models.py:23
+msgid "Mgr."
+msgstr ""
 
-#: .\agent\models.py:16
+#: .\agent\models.py:27
+msgid "DiS."
+msgstr ""
+
+#: .\agent\models.py:28
 msgid "MBA"
 msgstr "MBA"
 
-#: .\agent\models.py:21
+#: .\agent\models.py:29
+msgid "LL.M."
+msgstr ""
+
+#: .\agent\models.py:30
+msgid "CSc."
+msgstr ""
+
+#: .\agent\models.py:31
+msgid "DrSc."
+msgstr ""
+
+#: .\agent\models.py:32
+msgid "Ph.D."
+msgstr "Ph.D."
+
+#: .\agent\models.py:35 .\agent\models.py:81
 msgid "Employee"
 msgstr "Zaměstnanec"
 
-#: .\agent\models.py:22
+#: .\agent\models.py:36
 msgid "Guest"
 msgstr "Host"
 
-#: .\agent\models.py:23
+#: .\agent\models.py:37
 msgid "Contractor"
 msgstr "Zhotovitel"
 
-#: .\agent\models.py:24
+#: .\agent\models.py:38
 msgid "Supplier"
 msgstr "Dodavatel"
 
-#: .\agent\models.py:25
+#: .\agent\models.py:39
 msgid "Customer"
 msgstr "Zákazník"
 
-#: .\agent\models.py:26
+#: .\agent\models.py:40
 msgid "Other"
 msgstr "Ostatní"
 
-#: .\agent\templates\agent\list.html:5 .\agent\views.py:10
+#: .\agent\models.py:44
+msgid "Alias"
+msgstr ""
+
+#: .\agent\models.py:45
+msgid "First Name"
+msgstr ""
+
+#: .\agent\models.py:46
+msgid "Last Name"
+msgstr ""
+
+#: .\agent\models.py:47
+#, fuzzy
+#| msgid "Organization:"
+msgid "Organization"
+msgstr "Organizace"
+
+#: .\agent\models.py:48
+#, fuzzy
+#| msgid "Role:"
+msgid "Role"
+msgstr "Role"
+
+#: .\agent\models.py:49
+msgid "Title Before"
+msgstr ""
+
+#: .\agent\models.py:50
+msgid "Title After"
+msgstr ""
+
+#: .\agent\models.py:79
+msgid "Manager"
+msgstr ""
+
+#: .\agent\models.py:80
+msgid "Division Manager"
+msgstr ""
+
+#: .\agent\models.py:97
+msgid "Uživatel musí mít uživatelské jméno"
+msgstr ""
+
+#: .\agent\models.py:111
+msgid "Superuživatel musí mít is_staff=True."
+msgstr ""
+
+#: .\agent\models.py:113
+msgid "Superuživatel musí mít is_superuser=True."
+msgstr ""
+
+#: .\agent\templates\agent\list.html:6 .\agent\views.py:15
 msgid "Persons List"
 msgstr "Seznam osob"
 
-#: .\agent\templates\agent\list.html:17
+#: .\agent\templates\agent\list.html:18
 msgid "No persons found."
 msgstr "Databáze osob je prázdná"
 
-#: ⁨.\agent\templates\agent\person_detail copy.html⁩:10
 #: .\agent\templates\agent\person_detail.html:10
 msgid "Unique ID:"
 msgstr "Jedinečné ID"
 
-#: ⁨.\agent\templates\agent\person_detail copy.html⁩:11
 #: .\agent\templates\agent\person_detail.html:11
 msgid "Organization:"
 msgstr "Organizace"
 
-#: ⁨.\agent\templates\agent\person_detail copy.html⁩:12
 #: .\agent\templates\agent\person_detail.html:12
 msgid "Role:"
 msgstr "Role"
 
-#: ⁨.\agent\templates\agent\person_detail copy.html⁩:19
 #: .\agent\templates\agent\person_detail.html:21
 msgid "Select Month:"
 msgstr "Vyber měsíc"
 
-#: ⁨.\agent\templates\agent\person_detail copy.html⁩:22
 #: .\agent\templates\agent\person_detail.html:26
 msgid "View Monthly Summary"
 msgstr "Zobrazit měsíční přehled"
 
-#: ⁨.\agent\templates\agent\person_detail copy.html⁩:29
 #: .\agent\templates\agent\person_detail.html:30
 msgid "View Work Days List"
 msgstr "Zobrazit pracovní dny"
+
+#~ msgid "Dr."
+#~ msgstr "Dr."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-11 07:48+0100\n"
+"POT-Creation-Date: 2024-12-17 21:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\order\admin.py:25
+msgid "Hours Information"
+msgstr "Informationen zu den Stunden"
+
+#: .\order\admin.py:28
+msgid "Date Information"
+msgstr "Informationen zum Datum"
+
+#: .\order\admin.py:31
+msgid "Status Information"
+msgstr "Status-Informationen"
+
+#: .\order\admin.py:46
+msgid "Role Information"
+msgstr "Informationen zur Rolle"
+
+#: .\order\admin.py:66
+msgid "Work Information"
+msgstr "Informationen zur Arbeit"
+
+#: .\order\admin.py:69
+msgid "Metadata"
+msgstr "Metadaten"
 
 #: .\order\forms.py:17 .\order\views.py:41
 msgid "Assigned hours must be at least 0.5 hours."
@@ -34,7 +58,7 @@ msgstr "Code des Projekts, z. B. 25R001, 25K001."
 msgid "Project Name"
 msgstr "Projektname"
 
-#: .\order\models.py:20 .\order\models.py:86
+#: .\order\models.py:20 .\order\models.py:100
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -42,108 +66,126 @@ msgstr "Beschreibung"
 msgid "Optional description of the project."
 msgstr "Optionale Beschreibung des Projekts."
 
+#: .\order\models.py:28
+msgid "Start Date"
+msgstr "Startdatum"
+
 #: .\order\models.py:29
+msgid "Date when the project starts."
+msgstr "Datum, an dem das Projekt beginnt."
+
+#: .\order\models.py:35
+msgid "End Date"
+msgstr "Enddatum"
+
+#: .\order\models.py:36
+msgid "Date when the project is expected to end."
+msgstr "Datum, an dem das Projekt voraussichtlich enden wird."
+
+#: .\order\models.py:43
 msgid "Planned Hours"
 msgstr "Geplante Stunden"
 
-#: .\order\models.py:30
+#: .\order\models.py:44
 msgid "Planned number of hours for the project."
-msgstr "Geplante Anzahl von Stunden für das Projekt."
+msgstr "Geplante Anzahl der Stunden für das Projekt."
 
-#: .\order\models.py:36
+#: .\order\models.py:50
 msgid "Worked Hours"
 msgstr "Geleistete Stunden"
 
-#: .\order\models.py:37
+#: .\order\models.py:51
 msgid "Worked number of hours on the project."
-msgstr "Geleistete Stunden"
+msgstr "Anzahl der für das Projekt geleisteten Arbeitsstunden"
 
-#: .\order\models.py:41
+#: .\order\models.py:55
 msgid "New"
 msgstr "Neu"
 
-#: .\order\models.py:42
+#: .\order\models.py:56
 msgid "In Progress"
 msgstr "In Arbeit"
 
-#: .\order\models.py:43
+#: .\order\models.py:57
 msgid "Completed"
 msgstr "Abgeschlossen"
 
-#: .\order\models.py:44
+#: .\order\models.py:58
 msgid "Canceled"
 msgstr "Abgebrochen"
 
-#: .\order\models.py:47
+#: .\order\models.py:61
 msgid "Status"
 msgstr "Status"
 
-#: .\order\models.py:48
+#: .\order\models.py:62
 msgid "Project status: 0 = new, 1 = in progress, 2 = completed, 3 = canceled."
-msgstr "Projektstatus: 0 = neu, 1 = in Arbeit, 2 = abgeschlossen, 3 = abgebrochen."
+msgstr ""
+"Projektstatus: 0 = neu, 1 = in Arbeit, 2 = abgeschlossen, 3 = abgebrochen."
 
-#: .\order\models.py:52 .\order\models.py:61 .\order\models.py:78
+#: .\order\models.py:66 .\order\models.py:75 .\order\models.py:92
 #: .\order\templates\order\workday_assignments.html:22
 msgid "Project"
 msgstr "Projekt"
 
-#: .\order\models.py:53
+#: .\order\models.py:67
 msgid "Projects"
 msgstr "Projekte"
 
-#: .\order\models.py:60 .\order\models.py:77
+#: .\order\models.py:74 .\order\models.py:91
 msgid "Person"
 msgstr "Person"
 
-#: .\order\models.py:62
+#: .\order\models.py:76
 msgid "Assigned At"
 msgstr "Zugewiesen am"
 
-#: .\order\models.py:63
+#: .\order\models.py:77
 msgid "Role in Project"
 msgstr "Rolle im Projekt"
 
-#: .\order\models.py:66
+#: .\order\models.py:80
 msgid "Person-Project Assignment"
 msgstr "Person - Projektzuordnung"
 
-#: .\order\models.py:67
+#: .\order\models.py:81
 msgid "Person-Project Assignments"
 msgstr "Person - Projektzuordnungen"
 
-#: .\order\models.py:79
+#: .\order\models.py:93
 msgid "Work Date"
 msgstr "Datum der Arbeit"
 
-#: .\order\models.py:83
+#: .\order\models.py:97
 msgid "Hours Allocated"
 msgstr "Zugewiesene Stunden"
 
-#: .\order\models.py:84
+#: .\order\models.py:98
 msgid "Number of hours allocated to the project on the given date."
-msgstr "Anzahl der Stunden, die dem Projekt am angegebenen Datum zugewiesen wurden."
+msgstr ""
+"Anzahl der Stunden, die dem Projekt am angegebenen Datum zugewiesen wurden."
 
-#: .\order\models.py:86
+#: .\order\models.py:100
 msgid "Description of the work done."
 msgstr "Beschreibung der geleisteten Arbeit."
 
-#: .\order\models.py:87
+#: .\order\models.py:101
 msgid "Created At"
 msgstr "Erstellt am"
 
-#: .\order\models.py:88
+#: .\order\models.py:102
 msgid "Updated At"
 msgstr "Aktualisiert am"
 
-#: .\order\models.py:91
+#: .\order\models.py:105
 msgid "Work Log"
 msgstr "Arbeitsprotokoll"
 
-#: .\order\models.py:92
+#: .\order\models.py:106
 msgid "Work Logs"
 msgstr "Arbeitsprotokollen"
 
-#: .\order\models.py:95
+#: .\order\models.py:109
 msgid "Work log for {} on {} for project {}"
 msgstr "Arbeitsprotokoll für {} am {} für das Projekt {}"
 

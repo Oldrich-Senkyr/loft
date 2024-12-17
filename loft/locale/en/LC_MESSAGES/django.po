@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-03 14:19+0100\n"
+"POT-Creation-Date: 2024-12-17 21:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\loft\settings.py:129
+#: .\loft\settings.py:150
 msgid "English"
 msgstr "English"
 
-#: .\loft\settings.py:130
+#: .\loft\settings.py:151
 msgid "Čeština"
 msgstr "Czech"
 
-#: .\loft\settings.py:131
+#: .\loft\settings.py:152
 msgid "Deutsch"
 msgstr "German"

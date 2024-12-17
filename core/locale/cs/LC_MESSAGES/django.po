@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-03 14:19+0100\n"
+"POT-Creation-Date: 2024-12-17 21:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,8 +48,8 @@ msgid "Home"
 msgstr "Domů"
 
 #: .\core\templates\core\base.html:40
-msgid "Persons"
-msgstr "Osoba"
+msgid "Attandance"
+msgstr ""
 
 #: .\core\templates\core\base.html:41
 msgid "Work Days"
@@ -99,6 +99,9 @@ msgstr "Email:"
 #: .\core\templates\core\signup.html:29
 msgid "Repeat password:"
 msgstr "Opakujte heslo"
+
+#~ msgid "Persons"
+#~ msgstr "Osoba"
 
 #~ msgid "Switch Language:"
 #~ msgstr "Přepínání jazyka"
