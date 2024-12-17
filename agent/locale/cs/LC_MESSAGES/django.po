@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-17 21:47+0100\n"
+"POT-Creation-Date: 2024-12-17 22:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,55 +109,51 @@ msgstr "Ostatní"
 
 #: .\agent\models.py:44
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: .\agent\models.py:45
 msgid "First Name"
-msgstr ""
+msgstr "Jméno"
 
 #: .\agent\models.py:46
 msgid "Last Name"
-msgstr ""
+msgstr "Příjmení"
 
 #: .\agent\models.py:47
-#, fuzzy
-#| msgid "Organization:"
 msgid "Organization"
 msgstr "Organizace"
 
 #: .\agent\models.py:48
-#, fuzzy
-#| msgid "Role:"
 msgid "Role"
 msgstr "Role"
 
 #: .\agent\models.py:49
 msgid "Title Before"
-msgstr ""
+msgstr "Titul před"
 
 #: .\agent\models.py:50
 msgid "Title After"
-msgstr ""
+msgstr "Titul po"
 
 #: .\agent\models.py:79
 msgid "Manager"
-msgstr ""
+msgstr "Manažer"
 
 #: .\agent\models.py:80
 msgid "Division Manager"
-msgstr ""
+msgstr "Vedoucí divize"
 
 #: .\agent\models.py:97
-msgid "Uživatel musí mít uživatelské jméno"
-msgstr ""
+msgid "User must have a username"
+msgstr "Uživatel musí mít uživatelské jméno"
 
 #: .\agent\models.py:111
-msgid "Superuživatel musí mít is_staff=True."
-msgstr ""
+msgid "Superuser must have is_staff=True."
+msgstr "Superuživatel musí mít is_staff=True."
 
 #: .\agent\models.py:113
-msgid "Superuživatel musí mít is_superuser=True."
-msgstr ""
+msgid "Superuser must have is_superuser=True"
+msgstr "Superuživatel musí mít is_superuser=True"
 
 #: .\agent\templates\agent\list.html:6 .\agent\views.py:15
 msgid "Persons List"

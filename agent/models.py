@@ -94,7 +94,7 @@ class CustomUser(AbstractUser):
     class CustomUserManager(BaseUserManager):
         def create_user(self, username, email=None, password=None, **extra_fields):
             if not username:
-                raise ValueError(_('Uživatel musí mít uživatelské jméno'))
+                raise ValueError(_('User must have a username'))
             email = self.normalize_email(email)
             extra_fields.setdefault('is_active', True)
             user = self.model(username=username, email=email, **extra_fields)
@@ -108,8 +108,8 @@ class CustomUser(AbstractUser):
         extra_fields.setdefault('role', 'manager')  # Superuživatel je vždy manažer
 
         if extra_fields.get('is_staff') is not True:
-            raise ValueError(_('Superuživatel musí mít is_staff=True.'))
+            raise ValueError(_('Superuser must have is_staff=True.'))
         if extra_fields.get('is_superuser') is not True:
-            raise ValueError(_('Superuživatel musí mít is_superuser=True.'))
+            raise ValueError(_('Superuser must have is_superuser=True'))
 
         return self.create_user(username, email, password, **extra_fields)

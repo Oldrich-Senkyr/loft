@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-17 21:47+0100\n"
+"POT-Creation-Date: 2024-12-17 22:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,15 +143,15 @@ msgid "Division Manager"
 msgstr ""
 
 #: .\agent\models.py:97
-msgid "Uživatel musí mít uživatelské jméno"
+msgid "User must have a username"
 msgstr ""
 
 #: .\agent\models.py:111
-msgid "Superuživatel musí mít is_staff=True."
+msgid "Superuser must have is_staff=True."
 msgstr ""
 
 #: .\agent\models.py:113
-msgid "Superuživatel musí mít is_superuser=True."
+msgid "Superuser must have is_superuser=True"
 msgstr ""
 
 #: .\agent\templates\agent\list.html:6 .\agent\views.py:15

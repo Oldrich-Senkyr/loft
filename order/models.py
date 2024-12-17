@@ -73,7 +73,7 @@ class Project(models.Model):
 class PersonProject(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE, verbose_name=_("Person"))
     project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name=_("Project"))
-    assigned_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Assigned At"))
+    assigned_at = models.DateTimeField(auto_now=False, verbose_name=_("Assigned At"))
     role_in_project = models.CharField(max_length=50, verbose_name=_("Role in Project"))
 
     class Meta:
