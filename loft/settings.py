@@ -106,12 +106,12 @@ WSGI_APPLICATION = 'loft.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_loft',
-        'USER': 'db_loft_user',
-        'PASSWORD': 'dbloft',
-        'HOST': '10.20.30.99',  # IP address of your PostgreSQL server
-        'PORT': '5432',  # Default PostgreSQL port
-    #    'OPTIONS': {
+        'NAME': 'loft',
+        'USER': 'loft_admin',
+        'PASSWORD': 'loftadmin',
+        'HOST': 'localhost',  # IP address of your PostgreSQL server
+        'PORT': '5433',  # Default PostgreSQL port
+        #    'OPTIONS': {
      #       'charset': 'utf8mb4',
     #    }        
  
