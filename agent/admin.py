@@ -17,3 +17,33 @@ class PersonAdmin(admin.ModelAdmin):
 
 admin.site.register(Person, PersonAdmin)
 
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from .models import CustomUser  # Import vašeho modelu
+
+class CustomUserAdmin(UserAdmin):
+    # Zobrazené pole v admin rozhraní
+    list_display = ('username', 'email', 'role', 'is_staff', 'is_active')
+    list_filter = ('role', 'is_staff', 'is_active')
+    search_fields = ('username', 'email')
+    ordering = ('username',)
+
+    # Konfigurace formulářů pro zobrazení detailů uživatele
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
+        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+        (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
+        (_('Additional info'), {'fields': ('role', 'divisions')}),
+    )
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'email', 'password1', 'password2', 'role'),
+        }),
+    )
+
+# Registrace modelu do administrace
+admin.site.register(CustomUser, CustomUserAdmin)
+
+

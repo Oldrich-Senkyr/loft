@@ -74,22 +74,31 @@ class Division(models.Model):
         return self.name
     
 
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 class CustomUser(AbstractUser):
     ROLE_CHOICES = [
-        ('manager', _('Manager')),  # Lazy preklad názvu role
-        ('division_manager', _('Division Manager')),  # Lazy preklad názvu role
-        ('employee', _('Employee')),  # Lazy preklad názvu role
+        ('manager', _('Manager')),  # Lazy překlad názvu role
+        ('division_manager', _('Division Manager')),  # Lazy překlad názvu role
+        ('group_leader', _('Group Leader')),  # Nová role "skupinář"
+        ('employee', _('Employee')),  # Lazy překlad názvu role
     ]
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='employee')
-    divisions = models.ManyToManyField(Division, blank=True)  # Division Manager muže mít více divizí
+    divisions = models.ManyToManyField('Division', blank=True)  # Division Manager může mít více divizí
 
     def is_manager(self):
         return self.role == 'manager'
 
     def is_division_manager(self):
-        return self.role == 'division_manager'    
-    
-    from django.contrib.auth.models import BaseUserManager
+        return self.role == 'division_manager'
+
+    def is_group_leader(self):
+        return self.role == 'group_leader'
+
+    def is_employee(self):
+        return self.role == 'employee'
 
     class CustomUserManager(BaseUserManager):
         def create_user(self, username, email=None, password=None, **extra_fields):
@@ -102,14 +111,17 @@ class CustomUser(AbstractUser):
             user.save(using=self._db)
             return user
 
-    def create_superuser(self, username, email=None, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-        extra_fields.setdefault('role', 'manager')  # Superuživatel je vždy manažer
+        def create_superuser(self, username, email=None, password=None, **extra_fields):
+            extra_fields.setdefault('is_staff', True)
+            extra_fields.setdefault('is_superuser', True)
+            extra_fields.setdefault('role', 'manager')  # Superuživatel je vždy manažer
 
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError(_('Superuser must have is_staff=True.'))
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError(_('Superuser must have is_superuser=True'))
+            if extra_fields.get('is_staff') is not True:
+                raise ValueError(_('Superuser must have is_staff=True.'))
+            if extra_fields.get('is_superuser') is not True:
+                raise ValueError(_('Superuser must have is_superuser=True'))
 
-        return self.create_user(username, email, password, **extra_fields)
+            return self.create_user(username, email, password, **extra_fields)
+
+    objects = CustomUserManager()
+
