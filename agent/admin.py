@@ -3,10 +3,10 @@ from .models import Person
 from django.utils.translation import gettext_lazy as _
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ['display_name', 'first_name', 'last_name', 'organization', 'get_role_display']
+    list_display = ['display_name', 'first_name', 'last_name', 'company', 'get_role_display']
     fieldsets = (
         (None, {
-            'fields': ('display_name', 'first_name', 'last_name', 'organization', 'role', 'title_before', 'title_after')
+            'fields': ('display_name', 'first_name', 'last_name', 'company', 'role', 'title_before', 'title_after')
         }),
     )
 
@@ -19,9 +19,9 @@ admin.site.register(Person, PersonAdmin)
 
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser  # Import vašeho modelu
+from .models import AppUser  # Import vašeho modelu
 
-class CustomUserAdmin(UserAdmin):
+class AppUserAdmin(UserAdmin):
     # Zobrazené pole v admin rozhraní
     list_display = ('username', 'email', 'position', 'is_staff', 'is_active')
     list_filter = ('position', 'is_staff', 'is_active')
@@ -44,6 +44,6 @@ class CustomUserAdmin(UserAdmin):
     )
 
 # Registrace modelu do administrace
-admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(AppUser, AppUserAdmin)
 
 
