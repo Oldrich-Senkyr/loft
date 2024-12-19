@@ -23,8 +23,8 @@ from .models import CustomUser  # Import vašeho modelu
 
 class CustomUserAdmin(UserAdmin):
     # Zobrazené pole v admin rozhraní
-    list_display = ('username', 'email', 'role', 'is_staff', 'is_active')
-    list_filter = ('role', 'is_staff', 'is_active')
+    list_display = ('username', 'email', 'position', 'is_staff', 'is_active')
+    list_filter = ('position', 'is_staff', 'is_active')
     search_fields = ('username', 'email')
     ordering = ('username',)
 
@@ -34,12 +34,12 @@ class CustomUserAdmin(UserAdmin):
         (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-        (_('Additional info'), {'fields': ('role', 'divisions')}),
+        (_('Additional info'), {'fields': ('position', 'divisions')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'password1', 'password2', 'role'),
+            'fields': ('username', 'email', 'password1', 'password2', 'position'),
         }),
     )
 
