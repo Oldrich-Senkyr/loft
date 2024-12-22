@@ -34,7 +34,7 @@ class AppUserAdmin(UserAdmin):
         (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-        (_('Additional info'), {'fields': ('position', 'divisions')}),
+        (_('Additional info'), {'fields': ('position', )}),
     )
     add_fieldsets = (
         (None, {

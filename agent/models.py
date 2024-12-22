@@ -93,40 +93,10 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-class Company(models.Model):
-    """
-    Model reprezentující podnik.
-    """
-    name = models.CharField(max_length=255, unique=True)
-    description = models.TextField(blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.name
+from django.db import models
+from django.contrib.auth.models import User
 
-
-class Division(models.Model):
-    """
-    Model reprezentující divizi patřící k určité společnosti.
-    """
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name="divisions")
-    name = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
-
-    def __str__(self):
-        return f"{self.name} (Společnost: {self.company.name})"
-
-
-class Group(models.Model):
-    """
-    Model reprezentující skupinu patřící k určité divizi.
-    """
-    division = models.ForeignKey(Division, on_delete=models.CASCADE, related_name="groups")
-    name = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
-
-    def __str__(self):
-        return f"{self.name} (Divize: {self.division.name}, Společnost: {self.division.company.name})"
 
 
 class AppUserManager(BaseUserManager):
@@ -267,3 +237,48 @@ class HierarchyNode(models.Model):
             hierarchy_path.append(current.name)
             current = current.parent
         return " > ".join(reversed(hierarchy_path))
+
+class Company(models.Model):
+    """
+    Model reprezentující podnik.
+    """
+    name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.name
+
+
+class Division(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='divisions')
+
+    def __str__(self):
+        return self.name
+
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    division = models.ForeignKey(Division, on_delete=models.CASCADE, related_name='teams')
+
+    def __str__(self):
+        return self.name
+
+class Employee(models.Model):
+    class Meta: permissions = [ ("view_employee data", "Can view employee data"), 
+                                ("edit_employee", "Can edit employee data"), 
+                                ("view_team_data", "Can view team data"), 
+                                ("edit_team_data", "Can edit team data"), 
+                                ("view_division_data", "Can view division data"), 
+                                ("edit_division_data", "Can edit division data"), 
+                            ]
+    
+    user = models.OneToOneField(AppUser, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='members', null=True, blank=True)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
+
