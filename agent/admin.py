@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import Person
+from .models import Person, HierarchyNode,  UserHierarchyNode
 from django.utils.translation import gettext_lazy as _
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ['display_name', 'first_name', 'last_name', 'company', 'get_role_display']
+    list_display = ['display_name', 'first_name', 'last_name', 'get_role_display', 'managed_by']
     fieldsets = (
         (None, {
-            'fields': ('display_name', 'first_name', 'last_name', 'company', 'role', 'title_before', 'title_after')
+            'fields': ('display_name', 'first_name', 'last_name', 'role', 'title_before', 'title_after', 'managed_by')
         }),
     )
 
@@ -46,4 +46,20 @@ class AppUserAdmin(UserAdmin):
 # Registrace modelu do administrace
 admin.site.register(AppUser, AppUserAdmin)
 
+from django.contrib import admin
+from .models import HierarchyNode
 
+@admin.register(HierarchyNode)
+class HierarchyNodeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'parent', 'parent_type', 'created_at')  # Sloupce zobrazené v přehledu
+    list_filter = ('parent_type',)  # Filtr pro typy (Company, Division, Group)
+    search_fields = ('name', 'description')  # Vyhledávání podle jména a popisu
+    ordering = ('created_at',)  # Třídění podle data vytvoření
+
+
+
+@admin.register(UserHierarchyNode)
+class UserHierarchyNodeAdmin(admin.ModelAdmin):
+    list_display = ('user', 'hierarchy_node', 'role')
+    list_filter = ('role',)
+    search_fields = ('user__username', 'hierarchy_node__name')

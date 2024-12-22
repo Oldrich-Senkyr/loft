@@ -1,0 +1,34 @@
+Table HierarchyNode {
+  id integer [pk, increment, note: "Jedinečné ID hierarchického uzlu"]
+  parent_id integer [ref: > HierarchyNode.id, note: "Odkaz na nadřazený uzel"]
+  parent_type integer [note: "Typ nadřazené entity (viz ParentChoices enum)"]
+  name varchar(255) [unique, not null, note: "Název uzlu"]
+  description text [note: "Popis uzlu"]
+  created_at datetime [default: `current_timestamp`, note: "Datum a čas vytvoření uzlu"]
+}
+
+Table AppUser {
+  id integer [pk, increment, note: "Jedinečné ID uživatele aplikace"]
+  username varchar(150) [unique, not null, note: "Uživatelské jméno"]
+  email varchar(254) [note: "E-mailová adresa uživatele"]
+  password varchar(128) [note: "Hash hesla uživatele"]
+  position integer [default: 4, note: "Pozice uživatele (viz PositionChoices enum)"]
+}
+
+Table UserHierarchyNode {
+  user_id integer [ref: > AppUser.id, not null, note: "Odkaz na uživatele (AppUser.id)"]
+  hierarchy_node_id integer [ref: > HierarchyNode.id, not null, note: "Odkaz na hierarchický uzel (HierarchyNode.id)"]
+  role integer [default: 4, note: "Role uživatele v rámci uzlu"]
+}
+
+Table Person {
+  id integer [pk, increment, note: "ID osoby"]
+  unique_id varchar(10) [unique, not null, note: "Něco jako číslování a odlišení zaměstnanců např ET10, EV10"]
+  display_name varchar(25) [default: "Alias", note: "Přezdívka"]
+  first_name varchar(25) [not null, default: "Nomen", note: "Křestní jméno"]
+  last_name varchar(25) [not null, default: "Omen", note: "Příjmení"]
+  role integer [not null, default: 1, note: "Role osoby (1 = Employee, 2 = Guest, 3 = Contractor, 4 = Supplier, 5 = Customer, 6 = Other)"]
+  title_before varchar(10) [default: "", note: "Titul před jménem (např. Dr., Ing.)"]
+  title_after varchar(10) [default: "", note: "Titul za jménem (např. Ph.D., MBA)"]
+  hierarchy_node_id integer [ref: > HierarchyNode.id, not null, note: "Odkaz na hierarchický uzel, ke kterému osoba patří"]
+}

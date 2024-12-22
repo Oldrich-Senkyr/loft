@@ -1,55 +1,26 @@
-Table WorkDay {
-  id Integer [primary key]
-  employee_id Integer [ref: > Person.id, not null]
-  date Date [not null]
-  total_work_hours Decimal(5, 2) [not null]
-  total_legal_break Decimal(5, 2) [default: 0, not null]
-  total_illegal_break Decimal(5, 2) [default: 0, not null]
-
-  indexes {
-    (employee_id, date) [unique]
-  }
-  Note: "Work Day"
-}
-
-Table WorkDayAssignment {
-  id Integer [primary key]
-  workday_id Integer [ref: > WorkDay.id, not null]
-  project_id Integer [ref: > Project.id, not null]
-  assigned_hours Decimal(5, 2) [not null]
-  work_performed Varchar(100) [not null]
-
-  indexes {
-    (workday_id, project_id) [unique]
-  }
-
-  Note: "Work Day Assignment"
-}
 Table Person {
-  id Integer [primary key]
-  unique_id Varchar(20) [unique, not null]
-  name_display Varchar(25) [default: "Alias", not null]
-  name_first Varchar(25) [default: "Nomen", not null]
-  name_second Varchar(25) [default: "Omen", not null]
-  organization Varchar(100) [not null]
-  role Varchar(10) [not null]
-
-  Note: "Person"
+  id integer [pk, increment, note: "ID osoby"]
+  unique_id varchar(20) [unique, not null, note: "Unikátní ID osoby (např. ET10, EV10)"]
+  display_name varchar(25) [default: "Alias", note: "Přezdívka osoby"]
+  first_name varchar(25) [default: "Nomen", note: "Křestní jméno osoby"]
+  last_name varchar(25) [default: "Omen", note: "Příjmení osoby"]
+  role integer [not null, default: 6, note: "Role osoby (viz RoleChoices enum)"]
+  title_before varchar(10) [note: "Titul před jménem (např. Dr., Ing.)"]
+  title_after varchar(10) [note: "Titul za jménem (např. Ph.D., MBA)"]
 }
 
-Table Project {
-  id Integer [primary key]
-  code Integer [unique, not null]
-  name Varchar(70) [not null]
-  description Text
-  Note: "Project"
+Table Company {
+  id integer [pk, increment, note: "Jedinečné ID společnosti"]
+  name varchar(255) [unique, not null, note: "Název společnosti"]
+  description text [note: "Popis společnosti"]
+  created_at datetime [default: `current_timestamp`, note: "Datum a čas vytvoření společnosti"]
 }
 
-Table AttendanceEvent {
-  id integer [primary key]
-  person_id integer [ref: > Person.id, not null]
-  event_type integer [not null]
-  event_time timestamp [default: 'timezone.now', not null]
-  timestamp timestamp [default: 'timezone.now', not null]
-  departure_reason integer [default: 0, not null] Note: "Attendance Event"
-}
+ Table Division {
+  id integer [pk, increment, note: "Jedinečné ID divize"]
+  company_id integer [not null, Ref: > Company.id, note: "Odkaz na společnost, ke které divize patří"]
+  name varchar(255) [not null, note: "Název divize"]
+  description text [note: "Popis divize"]
+  
+  
+} 

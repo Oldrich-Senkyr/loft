@@ -1,0 +1,26 @@
+Table HierarchyNode {
+  id integer [pk, increment, note: "Jedinečné ID hierarchického uzlu"]
+  parent_id integer [ ref: > HierarchyNode.id, note: "Odkaz na nadřazený uzel"]
+  parent_type integer [note: "Typ nadřazené entity (viz ParentChoices enum)"]
+  name varchar(255) [unique, not null, note: "Název uzlu"]
+  description text [note: "Popis uzlu"]
+  created_at datetime [default: `current_timestamp`, note: "Datum a čas vytvoření uzlu"]
+}
+
+Table AppUser {
+  id integer [pk, increment, note: "Jedinečné ID uživatele aplikace"]
+  username varchar(150) [unique, not null, note: "Uživatelské jméno"]
+  email varchar(254) [note: "E-mailová adresa uživatele"]
+  password varchar(128) [note: "Hash hesla uživatele"]
+  position integer [default: 4, note: "Pozice uživatele (viz PositionChoices enum)"]
+}
+
+Table UserHierarchyNode {
+  user_id integer [ref: > AppUser.id, not null, note: "Odkaz na uživatele (AppUser.id)"]
+  hierarchy_node_id integer [ref: > HierarchyNode.id, not null, note: "Odkaz na hierarchický uzel (HierarchyNode.id)"]
+  role integer [default: 4, note: "Role uživatele v rámci uzlu"]
+
+  PrimaryKey {
+    user_id, hierarchy_node_id
+  }
+}
