@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    {{ company.name }} - Hierarchie společnosti
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold text-gray-800 my-4">Hierarchie společnosti: {{ company.name }}</h1>
+
+    <ul class="list-disc ml-6">
+        {% for division in company.divisions.all %}
+            <li class="mb-4">
+                <strong class="text-lg text-blue-600">Divize: {{ division.name }}</strong> 
+                {% if division.leader %}
+                    <span class="text-gray-600">(Vedoucí: {{ division.leader.user.username }})</span>
+                {% else %}
+                    <span class="text-gray-600">(Bez vedoucího)</span>
+                {% endif %}
+                <ul class="list-disc ml-6">
+                    {% for team in division.teams.all %}
+                        <li class="mb-2">
+                            <strong class="text-md text-green-600">Tým: {{ team.name }}</strong>
+                            {% if team.leader %}
+                                <span class="text-gray-600">(Vedoucí: {{ team.leader.user.username }})</span>
+                            {% else %}
+                                <span class="text-gray-600">(Bez vedoucího)</span>
+                            {% endif %}
+                            <ul class="list-disc ml-6">
+                                {% for employee in team.employees.all %}
+                                    <li class="text-gray-700">
+                                        Zaměstnanec: {{ employee.user.username }} 
+                                        (Role: {{ employee.get_role_display }})
+                                    </li>
+                                {% empty %}
+                                    <li class="text-gray-500">Žádní zaměstnanci</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% empty %}
+                        <li class="text-gray-500">Žádné týmy</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% empty %}
+            <li class="text-gray-500">Žádné divize</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
