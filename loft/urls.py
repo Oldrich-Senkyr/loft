@@ -33,7 +33,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
-    path('agent/', include('agent.urls')),
+    path('agent/', include('agent.urls', namespace='agent_i18n')),  # Podpora pro i18n)),
     path('eval/', include('eval.urls')),
     path('reader/', include('reader.urls', namespace='reader_i18n')),  # Podpora pro i18n
     path('order/', include('order.urls')),

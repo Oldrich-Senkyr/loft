@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- jQuery (required for Bootstrap's JavaScript plugins) -->
-
 {% load i18n %}
 {% load static %}
 <html lang="en">
@@ -9,95 +7,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
-
-    <!-- Instalace SweetAlert2: -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-    <!-- Bootstrap JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">   
-    <script src="https://cdn.tailwindcss.com"></script>                    <!--      Tento řádek kódu přidává Tailwind CSS do vaší webové stránky prostřednictvím CDN (Content Delivery Network).-->
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>{% block title %}{% trans "My Site" %}{% endblock %}</title>
-    {% block extra_head %}    {% endblock %}
+    {% block extra_head %}{% endblock %}
 </head>
-
-
-
-
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
     <!-- Navigation Bar -->
-   
-   <!-- Navigation Bar -->
-<nav class="py-6 px-6 flex justify-between items-center border-b border-gray-400">
-    <div class="container mx-auto flex justify-between items-center">
-        <a href="/" class="text-gray-500 text-3xl font-bold">{% trans "My Site" %}</a>
-        <div class="flex items-center space-x-4">
-            <a href="{% url 'core:index' %}" class="text-white">{% trans "Home" %}</a>
+    <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-400">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-gray-500 text-3xl font-bold">{% trans "My Site" %}</a>
+            <div class="flex items-center space-x-4">
+                <a href="{% url 'core:index' %}" class="text-white">{% trans "Home" %}</a>
 
-            {% if user.is_authenticated %}
-                <a href="{% url 'agent:persons_list' %}" class="px-6 py-3 text-lg font-semibold bg-yellow-500 text-white rounded-xl hover:bg-yellow-700">{% trans "Attendance" %}</a>
-                <a href="{% url 'eval:workdays_list' %}" class="px-6 py-3 text-lg font-semibold bg-green-500 text-white rounded-xl hover:bg-green-700">{% trans "Work Days" %}</a>
-                <a href="{% url 'agent:persons_list' %}" class="px-6 py-3 text-lg font-semibold bg-purple-500 text-white rounded-xl hover:bg-purple-700">{% trans "Projects" %}</a>
-                                                                
-                 <!-- Dropdown Menu -->
-            <div class="relative">
-            <!-- Hlavní tlačítko -->
-            <button 
-                class="px-6 py-3 text-lg font-semibold bg-blue-500 text-white rounded-xl hover:bg-blue-700"
-                id="dropdownButton"
-    >           {% trans "Administration" %}
-            </button>
-    
-         <!-- Dropdown menu -->
-        <div 
-        id="dropdownMenu"
-        class="absolute hidden bg-blue-200 shadow-md rounded-lg mt-2 space-y-2"
-        >
-        <a href="{% url 'reader_i18n:events_list' %}" 
-            class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-t-lg">
-            {% trans "All Events" %}
-        </a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'agent:persons_list' %}" class="px-6 py-3 text-lg font-semibold bg-yellow-500 text-white rounded-xl hover:bg-yellow-700">{% trans "Attendance" %}</a>
+                    <a href="{% url 'eval:workdays_list' %}" class="px-6 py-3 text-lg font-semibold bg-green-500 text-white rounded-xl hover:bg-green-700">{% trans "Work Days" %}</a>
+                    <a href="{% url 'agent:persons_list' %}" class="px-6 py-3 text-lg font-semibold bg-purple-500 text-white rounded-xl hover:bg-purple-700">{% trans "Projects" %}</a>
 
-        <!-- Small separator with a different background color -->
-        <div class="h-1 bg-white"></div>
+                    <!-- Dropdown Menu -->
+                    <div class="relative">
+                        <button class="px-6 py-3 text-lg font-semibold bg-blue-500 text-white rounded-xl hover:bg-blue-700" data-dropdown="dropdownMenu">{% trans "Administration" %}</button>
+                        <div id="dropdownMenu" class="absolute hidden bg-blue-200 shadow-md rounded-lg mt-2 space-y-2">
+                            <a href="{% url 'reader_i18n:events_list' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-t-lg">{% trans "All Events" %}</a>
+                            <div class="h-1 bg-white"></div>
+                            <a href="{% url 'reader_i18n:events_list' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white">{% trans "Filtered Events" %}</a>
+                            <div class="h-1 bg-white"></div>
+                            <a href="{% url 'reader_i18n:events_list' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-b-lg">{% trans "Upcoming Events" %}</a>
+                        </div>
+                    </div>
 
-        <a href="{% url 'reader_i18n:events_list' %}" 
-            class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white">
-            {% trans "Filtered Events" %}
-        </a>
+                    <div class="relative">
+                        <button class="px-6 py-3 text-lg font-semibold bg-blue-500 text-white rounded-xl hover:bg-blue-700" data-dropdown="dropdownMenu_1">{% trans "Reports" %}</button>
+                        <div id="dropdownMenu_1" class="absolute hidden bg-blue-200 shadow-md rounded-lg mt-2 space-y-2">
+                            <a href="{% url 'agent_i18n:company_hierarchy' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-t-lg">{% trans "Hierarchy" %}</a>
+                            <div class="h-1 bg-white"></div>
+                            <a href="{% url 'reader_i18n:events_list' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white">{% trans "Filtered Events" %}</a>
+                            <div class="h-1 bg-white"></div>
+                            <a href="{% url 'reader_i18n:events_list' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-b-lg">{% trans "Upcoming Events" %}</a>
+                        </div>
+                    </div>
+                    <a href="{% url 'core:logout' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">{% trans "Logout" %}</a>
+                {% else %}
+                    <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">{% trans "Log In" %}</a>
+                    <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">{% trans "Sign up" %}</a>
+                {% endif %}
 
-        <!-- Small separator with a different background color -->
-        <div class="h-1 bg-white"></div>
-
-        <a href="{% url 'reader_i18n:events_list' %}" 
-            class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-b-lg">
-            {% trans "Upcoming Events" %}
-        </a>
-        </div>
-        
-        </div>
-                <a href="{% url 'core:logout' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">{% trans "Logout" %}</a>
-            {% else %}
-                <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">{% trans "Log In" %}</a>
-                <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">{% trans "Sign up" %}</a>
-            {% endif %}
-
-            <!-- Přepínač jazyků -->
-            <div class="flex flex-col items-center ml-4">
-                <a href="{% url 'core:switch_language' 'cs' %}" class="mb-1"><img src="{% static 'flags/cs.png' %}" alt="Čeština" class="w-8 h-auto"></a>
-                <a href="{% url 'core:switch_language' 'en' %}" class="mb-1"><img src="{% static 'flags/en.png' %}" alt="English" class="w-8 h-auto"></a>
-                {% if True %}
+                <!-- Language Switcher -->
+                <div class="flex flex-col items-center ml-4">
+                    <a href="{% url 'core:switch_language' 'cs' %}" class="mb-1"><img src="{% static 'flags/cs.png' %}" alt="Čeština" class="w-8 h-auto"></a>
+                    <a href="{% url 'core:switch_language' 'en' %}" class="mb-1"><img src="{% static 'flags/en.png' %}" alt="English" class="w-8 h-auto"></a>
                     <a href="{% url 'core:switch_language' 'de' %}"><img src="{% static 'flags/de.png' %}" alt="Deutsch" class="w-8 h-auto"></a>
-                {% endif %}    
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-
-    <!-- Flash messages -->
+    <!-- Flash Messages -->
     {% if messages %}
         <div class="container mx-auto mt-4">
             <ul>
@@ -108,15 +78,11 @@
         </div>
     {% endif %}
 
-    <!-- Main content -->
+    <!-- Main Content -->
     <div class="container mx-auto py-8">
-        {% block content %}
-        <!-- Specific page content will be inserted here -->
-        {% endblock %}
+        {% block content %}{% endblock %}
     </div>
-     
-    
- 
+
     <!-- Footer -->
     <footer class="bg-gray-800 p-6 text-white">
         <div class="container mx-auto text-center">
@@ -124,26 +90,25 @@
         </div>
     </footer>
 
-    <!-- Optional scripts -->
-    {% block extra_js %}
+    <!-- Dropdown Menu Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const dropdownButton = document.getElementById('dropdownButton');
-            const dropdownMenu = document.getElementById('dropdownMenu');
-        
-            // Zobrazit nebo skrýt menu při kliknutí na tlačítko
-            dropdownButton.addEventListener('click', function () {
-                dropdownMenu.classList.toggle('hidden');
-            });
-        
-            // Skrytí menu, pokud uživatel klikne mimo něj
-            document.addEventListener('click', function (event) {
-                if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                    dropdownMenu.classList.add('hidden');
-                }
+            const dropdownButtons = document.querySelectorAll('[data-dropdown]');
+            dropdownButtons.forEach(button => {
+                const menuId = button.getAttribute('data-dropdown');
+                const menu = document.getElementById(menuId);
+
+                button.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!button.contains(event.target) && !menu.contains(event.target)) {
+                        menu.classList.add('hidden');
+                    }
+                });
             });
         });
     </script>
-    {% endblock %}
 </body>
 </html>

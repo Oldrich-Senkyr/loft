@@ -1,0 +1,54 @@
+Table Person {
+  id integer [pk, increment, note: "ID osoby"]
+  unique_id varchar(20) [unique, not null, note: "Něco jako číslování a odlišení zaměstnanců např ET10, EV10"]
+  display_name varchar(25) [default: "Alias", note: "Přezdívka"]
+  first_name varchar(25) [not null, default: "Nomen", note: "Křestní jméno"]
+  last_name varchar(25) [not null, default: "Omen", note: "Příjmení"]
+  role integer [not null, default: 6, note: "Role osoby (1 = Employee, 2 = Guest, 3 = Contractor, 4 = Supplier, 5 = Customer, 6 = Other)"]
+  title_before varchar(10) [default: "", note: "Titul před jménem (např. Dr., Ing.)"]
+  title_after varchar(10) [default: "", note: "Titul za jménem (např. Ph.D., MBA)"]
+}
+
+Table AppUser {
+  id integer [pk, increment, note: "ID uživatele"]
+  username varchar(150) [unique, not null]
+  password varchar(128) [not null]
+  first_name varchar(50) [not null, note: "Křestní jméno"]
+  last_name varchar(50) [not null, note: "Příjmení"]
+  email varchar(254) [unique, not null, note: "Emailová adresa"]
+  position integer [not null, default: 4, note: "Pozice uživatele (1 = Manager, 2 = Division Manager, 3 = Group Leader, 4 = Employee)"]
+}
+
+Table Company {
+  id integer [pk, increment, note: "ID společnosti"]
+  name varchar(255) [not null]
+  description text [null]
+}
+
+Table Division {
+  id integer [pk, increment, note: "ID divize"]
+  name varchar(255) [not null]
+  company_id integer [ref: > Company.id, not null, note: "Odkaz na společnost"]
+  leader_id integer [ref: > Employee.id, null, note: "Odkaz na vedoucího divize"]
+}
+
+Table Team {
+  id integer [pk, increment, note: "ID týmu"]
+  name varchar(255) [not null]
+  division_id integer [ref: > Division.id, not null, note: "Odkaz na divizi"]
+  leader_id integer [ref: > Employee.id, null, note: "Odkaz na vedoucího týmu"]
+}
+
+Table Employee {
+  id integer [pk, increment, note: "ID zaměstnance"]
+  unique_id varchar(20) [unique, not null, note: "Něco jako číslování a odlišení zaměstnanců např ET10, EV10"]
+  display_name varchar(25) [default: "Alias", note: "Přezdívka"]
+  first_name varchar(25) [not null, default: "Nomen", note: "Křestní jméno"]
+  last_name varchar(25) [not null, default: "Omen", note: "Příjmení"]
+  role integer [not null, default: 6, note: "Role osoby (1 = Employee, 2 = Guest, 3 = Contractor, 4 = Supplier, 5 = Customer, 6 = Other)"]
+  title_before varchar(10) [default: "", note: "Titul před jménem (např. Dr., Ing.)"]
+  title_after varchar(10) [default: "", note: "Titul za jménem (např. Ph.D., MBA)"]
+  user_id integer [ref: > AppUser.id, null, note: "Odkaz na uživatele"]
+  team_id integer [ref: > Team.id, null, note: "Odkaz na tým"]
+  employee_role varchar(20) [null, note: "Role zaměstnance (manager, division_leader, team_leader, staff)"]
+}

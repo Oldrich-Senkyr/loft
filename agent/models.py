@@ -40,7 +40,8 @@ class Person(models.Model):
         (6, _('Other')),
     ]
 
-    unique_id = models.CharField(max_length=20, unique=True, editable=False)
+    
+    unique_id = models.CharField(max_length=20, unique=True, verbose_name=_("Unique ID"), help_text=_("Enter a unique identifier."))
     display_name = models.CharField(max_length=25, default="Alias", verbose_name=_("Alias"))
     first_name = models.CharField(max_length=25, default="Nomen", verbose_name=_("First Name"))
     last_name = models.CharField(max_length=25, default="Omen", verbose_name=_("Last Name"))
@@ -48,19 +49,9 @@ class Person(models.Model):
     title_before = models.CharField(max_length=10, choices=TITLE_BEFORE_CHOICES, blank=True, verbose_name=_("Title Before"))
     title_after = models.CharField(max_length=10, choices=TITLE_AFTER_CHOICES, blank=True, verbose_name=_("Title After"))
  
-    def generate_unique_id(self):
-        return f"{self.role}{self.pk}"
-
-    def save(self, *args, **kwargs):
-        if not self.unique_id:
-            super().save(*args, **kwargs)  # Save to generate PK
-            self.unique_id = self.generate_unique_id()
-            super().save(update_fields=['unique_id'])
-        else:
-            super().save(*args, **kwargs)
-
+    
     def __str__(self):
-        return f"{self.last_name} {self.first_name} ({self.get_role_display()})"
+        return f"{self.unique_id} {self.last_name} {self.first_name} ({self.get_role_display()})"
 
 
 """
@@ -165,114 +156,33 @@ class AppUser(AbstractUser):
         return self.position == 4
 
 
-   
 
 
-
-
-
-from django.contrib.auth.models import User
-
-from django.conf import settings
-
-from django.conf import settings
-from django.db import models
-
-from django.conf import settings
-
-from django.conf import settings
-from django.db import models
-
-from django.conf import settings
-from django.db import models
-
-
-
-from django.db import models
-from django.conf import settings
 
 class Company(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
+    leader = models.ForeignKey('Person', null=True, blank=True, on_delete=models.SET_NULL, related_name='led_companies', verbose_name=_("Leader"))
 
     def __str__(self):
         return self.name
-
 
 class Division(models.Model):
     name = models.CharField(max_length=255)
-    company = models.ForeignKey(
-        Company, on_delete=models.CASCADE, related_name='divisions'
-    )
-    leader = models.ForeignKey(
-        'agent.Employee', null=True, blank=True, on_delete=models.SET_NULL, related_name='led_divisions'
-    )
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='divisions')
+    leader = models.ForeignKey('Person', null=True, blank=True, on_delete=models.SET_NULL, related_name='led_divisions')
 
     def __str__(self):
         return self.name
-
+    
 
 class Team(models.Model):
     name = models.CharField(max_length=255)
-    division = models.ForeignKey(
-        Division, on_delete=models.CASCADE, related_name='teams'
-    )
-    leader = models.ForeignKey(
-        'agent.Employee', null=True, blank=True, on_delete=models.SET_NULL, related_name='led_teams'
-    )
+    division = models.ForeignKey(Division, on_delete=models.CASCADE, related_name='teams')
+    leader = models.ForeignKey('Person', null=True, blank=True, on_delete=models.SET_NULL, related_name='led_teams')
 
     def __str__(self):
         return self.name
 
-
-from django.db import models
-from django.conf import settings
-from django.utils.translation import gettext_lazy as _
-
-class Employee(Person):  # Dědí z Person
-    user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, 
-        on_delete=models.CASCADE, 
-        null=True, 
-        blank=True, 
-        verbose_name=_("Associated User")
-    )
-    team = models.ForeignKey(
-        'Team', 
-        null=True, 
-        blank=True, 
-        on_delete=models.SET_NULL, 
-        related_name='employees',
-        verbose_name=_("Team")
-    )
-    role_choices = [
-        ('manager', 'Manager'),
-        ('division_leader', 'Division Leader'),
-        ('team_leader', 'Team Leader'),
-        ('staff', 'Staff'),
-    ]
-    employee_role = models.CharField(
-        max_length=20, 
-        choices=role_choices, 
-        blank=True, 
-        verbose_name=_("Employee Role")
-    )
-
-    def associate_user(self, user):
-        """
-        Propojí zaměstnance s uživatelem.
-        """
-        self.user = user
-        self.save()
-
-    def remove_user(self):
-        """
-        Odpojí uživatele od zaměstnance.
-        """
-        self.user = None
-        self.save()
-
-    def __str__(self):
-        return f"{self.last_name} {self.first_name} ({self.employee_role})"
 
 

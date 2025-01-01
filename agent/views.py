@@ -32,77 +32,8 @@ def person_detail(request, person_id):
 
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Employee
-
-@permission_required('app_name.view_team_data')
-def team_members(request):
-    team = request.user.employee.team
-    members = Employee.objects.filter(team=team)
-    return render(request, 'team_members.html', {'members': members})
-
-@permission_required('app_name.edit_team_data')
-def edit_team_member(request, member_id):
-    member = get_object_or_404(Employee, pk=member_id)
-    if member.team == request.user.employee.team:
-        if request.method == "POST":
-            # vaše logika pro editaci
-            pass
-        return render(request, 'edit_team_member.html', {'member': member})
-    else:
-        return redirect('not_allowed')  # Případ, kdy uživatel nemá oprávnění editovat
 
 
-from django.shortcuts import render
-
-def team_list(request):
-    user = request.user
-    teams = get_accessible_teams(user)
-    return render(request, 'team_list.html', {'teams': teams})
-
-from django.shortcuts import get_object_or_404
-
-def team_detail(request, team_id):
-    team = get_object_or_404(get_accessible_teams(request.user), id=team_id)
-    members = get_accessible_team_members(request.user).filter(team=team)
-    return render(request, 'team_detail.html', {'team': team, 'members': members})
-
-
-def division_list(request):
-    divisions = get_accessible_divisions(request.user)
-    return render(request, 'division_list.html', {'divisions': divisions})
-
-
-
-def get_accessible_companies(user):
-    if user.employee.role == 'manager':
-        return Company.objects.all()
-    return Company.objects.none()
-
-def get_accessible_divisions(user):
-    if user.employee.role == 'manager':
-        return Division.objects.all()
-    elif user.employee.role == 'division_leader':
-        return Division.objects.filter(id=user.employee.division_id)
-    return Division.objects.none()
-
-def get_accessible_teams(user):
-    if user.employee.role == 'manager':
-        return Team.objects.all()
-    elif user.employee.role == 'division_leader':
-        return Team.objects.filter(division=user.employee.division)
-    elif user.employee.role == 'team_leader':
-        return Team.objects.filter(id=user.employee.team_id)
-    return Team.objects.none()
-
-def get_accessible_team_members(user):
-    if user.employee.role == 'manager':
-        return Employee.objects.all()
-    elif user.employee.role == 'division_leader':
-        teams = Team.objects.filter(division=user.employee.division)
-        return Employee.objects.filter(team__in=teams)
-    elif user.employee.role == 'team_leader':
-        return Employee.objects.filter(team=user.employee.team)
-    return Employee.objects.none()
 
 def company_hierarchy(request):
     # Předpoklad: Máte pouze jednu společnost, jinak přidejte filtraci
@@ -113,5 +44,25 @@ def company_hierarchy(request):
 
     context = {
         'company': company,
+    }
+    return render(request, 'agent/company_hierarchy.html', context)
+
+
+from django.shortcuts import render
+from .models import Company, Division, Team
+
+def company_hierarchy(request):
+    """
+    Displays the hierarchy of companies, divisions, and teams, including their leaders.
+    """
+    companies = Company.objects.prefetch_related(
+        'divisions__teams',
+        'leader',
+        'divisions__leader',
+        'divisions__teams__leader'
+    ).all()
+
+    context = {
+        'companies': companies
     }
     return render(request, 'agent/company_hierarchy.html', context)

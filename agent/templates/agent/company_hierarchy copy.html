@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block title %}
+    {% if companies.count == 1 %}
+        {% blocktrans with company_name=companies.first.name %}
+            {{ company_name }} - Hierarchy
+        {% endblocktrans %}
+    {% else %}
+        {% trans "Company Hierarchy" %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Company Hierarchy" %}</h1>
+
+    {% for company in companies %}
+    <div>
+        <h2>{% trans "Company" %}: {{ company.name }}</h2>
+        <p><strong>{% trans "Leader" %}:</strong> 
+            {% if company.leader %}
+                {{ company.leader.first_name }} {{ company.leader.last_name }} ({{ company.leader.get_role_display }})
+            {% else %}
+                {% trans "No leader assigned" %}
+            {% endif %}
+        </p>
+
+        {% for division in company.divisions.all %}
+        <div class="hierarchy">
+            <h3>{% trans "Division" %}: {{ division.name }}</h3>
+            <p><strong>{% trans "Leader" %}:</strong> 
+                {% if division.leader %}
+                    {{ division.leader.first_name }} {{ division.leader.last_name }} ({{ division.leader.get_role_display }})
+                {% else %}
+                    {% trans "No leader assigned" %}
+                {% endif %}
+            </p>
+
+            {% for team in division.teams.all %}
+            <div class="hierarchy">
+                <h4>{% trans "Team" %}: {{ team.name }}</h4>
+                <p><strong>{% trans "Leader" %}:</strong> 
+                    {% if team.leader %}
+                        {{ team.leader.first_name }} {{ team.leader.last_name }} ({{ team.leader.get_role_display }})
+                    {% else %}
+                        {% trans "No leader assigned" %}
+                    {% endif %}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+{% endblock %}
