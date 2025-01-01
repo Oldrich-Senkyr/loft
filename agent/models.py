@@ -42,7 +42,7 @@ class Person(models.Model):
 
     
     unique_id = models.CharField(max_length=20, unique=True, verbose_name=_("Unique ID"), help_text=_("Enter a unique identifier."))
-    display_name = models.CharField(max_length=25, default="Alias", verbose_name=_("Alias"))
+    display_name = models.CharField(max_length=25, default="Alias", verbose_name=_("Alias"), blank=True, null=True)
     first_name = models.CharField(max_length=25, default="Nomen", verbose_name=_("First Name"))
     last_name = models.CharField(max_length=25, default="Omen", verbose_name=_("Last Name"))
     role = models.IntegerField(choices=ROLE_CHOICES, default=6, verbose_name=_("Role"))
@@ -184,5 +184,16 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
+class PersonCompany(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="person_companies", verbose_name=_("Person reference"))
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name="company_persons", verbose_name=_("Company reference"))
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['person', 'company'], name='unique_person_company')
+        ]
+        verbose_name = _("Person-Company Relationship")
+        verbose_name_plural = _("Person-Company Relationships")
 
+    def __str__(self):
+        return f"{self.person} - {self.company}"

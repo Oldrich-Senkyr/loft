@@ -67,15 +67,13 @@ msgstr "Arbeitsstunden insgesamt"
 
 #: .\eval\models.py:43
 msgid "Total work hours including breaks and working time."
-msgstr ""
+msgstr "Gesamtarbeitszeit einschließlich Pausen und Arbeitszeit."
 
 #: .\eval\models.py:47 .\eval\templates\eval\workdays_list.html:15
 msgid "Total Legal Break Hours"
 msgstr "Gesamte gesetzliche Pausenstunden"
 
 #: .\eval\models.py:49
-#, fuzzy
-#| msgid "Total time for legal breaks in hours."
 msgid "Total time for legal breaks."
 msgstr "Gesamtzeit für bezahlte Pausen in Stunden."
 
@@ -84,8 +82,6 @@ msgid "Total Illegal Break Hours"
 msgstr "Nicht bezahlte Pausenstunden"
 
 #: .\eval\models.py:55
-#, fuzzy
-#| msgid "Total time for unauthorized breaks in hours."
 msgid "Total time for unauthorized breaks."
 msgstr "Gesamtzeit für nicht bezahlte Pausen in Stunden."
 
@@ -94,8 +90,6 @@ msgid "Assigned Hours"
 msgstr "Zugewiesene Stunden"
 
 #: .\eval\models.py:61
-#, fuzzy
-#| msgid "Total time Assigned hours."
 msgid "Total time for assigned hours."
 msgstr "Gesamtzeit Zugewiesene Stunden."
 

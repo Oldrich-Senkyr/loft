@@ -230,9 +230,7 @@ msgstr "Přidat přiřazení"
 
 #: .\order\templates\order\workday_assignments.html:51
 msgid "There are unassigned hours. Please ensure all hours are accounted for."
-msgstr ""
-"Existují nepřiřazené hodiny. Ujistěte se prosím, že jsou všechny hodiny "
-"zaúčtovány."
+msgstr "Existují nepřiřazené hodiny. Ujistěte se prosím, že jsou všechny hodiny zaúčtovány."
 
 #: .\order\views.py:35
 #, python-format

@@ -68,15 +68,13 @@ msgstr "Odpracované hodiny"
 
 #: .\eval\models.py:43
 msgid "Total work hours including breaks and working time."
-msgstr ""
+msgstr "Celková pracovní doba včetně přestávek a pracovní doby."
 
 #: .\eval\models.py:47 .\eval\templates\eval\workdays_list.html:15
 msgid "Total Legal Break Hours"
 msgstr "Placene přestávky celkem"
 
 #: .\eval\models.py:49
-#, fuzzy
-#| msgid "Total time for legal breaks in hours."
 msgid "Total time for legal breaks."
 msgstr "Placene přestávky celkem"
 
@@ -85,8 +83,6 @@ msgid "Total Illegal Break Hours"
 msgstr "Neplacene přestávky celkem"
 
 #: .\eval\models.py:55
-#, fuzzy
-#| msgid "Total time for unauthorized breaks in hours."
 msgid "Total time for unauthorized breaks."
 msgstr "Celková doba neplacených přestávek v hodinách."
 
@@ -95,8 +91,6 @@ msgid "Assigned Hours"
 msgstr "Přiřazené hodiny"
 
 #: .\eval\models.py:61
-#, fuzzy
-#| msgid "Total time Assigned hours."
 msgid "Total time for assigned hours."
 msgstr "Přidělené hodiny celkem"
 

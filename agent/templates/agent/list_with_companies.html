@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Persons List" %}
+{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-6">{% trans "Persons List" %}</h1>
+
+<div class="persons-list space-y-8">
+    {% for entry in persons_with_companies %}
+    <div class="person border-b border-gray-300 pb-4">
+        <h2 class="text-xl font-semibold">
+            {{ entry.person.first_name }} {{ entry.person.last_name }}
+        </h2>
+        <p class="text-gray-700">
+            <strong>{% trans "Display Name" %}:</strong> {{ entry.person.display_name }}
+        </p>
+        <p class="text-gray-700">
+            <strong>{% trans "Role" %}:</strong> {{ entry.person.get_role_display }}
+        </p>
+        <p class="text-gray-700">
+            <strong>{% trans "Companies" %}:</strong>
+            {% if entry.companies %}
+                <ul class="list-disc list-inside pl-4">
+                    {% for company in entry.companies %}
+                    <li>{{ company.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <span class="text-gray-500">{% trans "No company assigned" %}</span>
+            {% endif %}
+        </p>
+        <p>
+            <a href="{% url 'agent:edit_person' entry.person.id %}" 
+               class="text-blue-500 hover:underline">
+                {% trans "Edit this person" %}
+            </a>
+        </p>
+    </div>
+    {% empty %}
+    <div class="text-gray-500">
+        {% trans "No persons found." %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

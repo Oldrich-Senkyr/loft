@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Edit Person" %}
+{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-6">{% trans "Edit Person" %}</h1>
+
+<form method="post" class="space-y-4">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div>
+        <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            {{ form.first_name.label }}
+        </label>
+        {{ form.first_name }}
+        {{ form.first_name.errors }}
+    </div>
+    <div>
+        <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            {{ form.last_name.label }}
+        </label>
+        {{ form.last_name }}
+        {{ form.last_name.errors }}
+    </div>
+    <div>
+        <label for="{{ form.display_name.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            {{ form.display_name.label }}
+        </label>
+        {{ form.display_name }}
+        {{ form.display_name.errors }}
+    </div>
+    <div>
+        <label for="{{ form.role.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            {{ form.role.label }}
+        </label>
+        {{ form.role }}
+        {{ form.role.errors }}
+    </div>
+    <div>
+        <label for="{{ form.companies.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            {{ form.companies.label }}
+        </label>
+        {{ form.companies }}
+        {{ form.companies.errors }}
+    </div>
+    <div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
+            {% trans "Save" %}
+        </button>
+        <a href="{% url 'agent:persons_list_with_companies' %}" class="text-blue-500 hover:underline">
+            {% trans "Cancel" %}
+        </a>
+    </div>
+</form>
+{% endblock %}
+

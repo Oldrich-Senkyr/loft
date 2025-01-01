@@ -29,7 +29,7 @@
                     <a href="{% url 'eval:workdays_list' %}" class="px-6 py-3 text-lg font-semibold bg-green-500 text-white rounded-xl hover:bg-green-700">{% trans "Work Days" %}</a>
                     <a href="{% url 'agent:persons_list' %}" class="px-6 py-3 text-lg font-semibold bg-purple-500 text-white rounded-xl hover:bg-purple-700">{% trans "Projects" %}</a>
 
-                    <!-- Dropdown Menu -->
+                    <!-- Dropdown Menu Administration -->
                     <div class="relative">
                         <button class="px-6 py-3 text-lg font-semibold bg-blue-500 text-white rounded-xl hover:bg-blue-700" data-dropdown="dropdownMenu">{% trans "Administration" %}</button>
                         <div id="dropdownMenu" class="absolute hidden bg-blue-200 shadow-md rounded-lg mt-2 space-y-2">
@@ -40,15 +40,15 @@
                             <a href="{% url 'reader_i18n:events_list' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-b-lg">{% trans "Upcoming Events" %}</a>
                         </div>
                     </div>
-
+                    <!-- Dropdown Menu Reports -->    
                     <div class="relative">
                         <button class="px-6 py-3 text-lg font-semibold bg-blue-500 text-white rounded-xl hover:bg-blue-700" data-dropdown="dropdownMenu_1">{% trans "Reports" %}</button>
                         <div id="dropdownMenu_1" class="absolute hidden bg-blue-200 shadow-md rounded-lg mt-2 space-y-2">
                             <a href="{% url 'agent_i18n:company_hierarchy' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-t-lg">{% trans "Hierarchy" %}</a>
                             <div class="h-1 bg-white"></div>
-                            <a href="{% url 'reader_i18n:events_list' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white">{% trans "Filtered Events" %}</a>
+                            <a href="{% url 'agent:persons_list' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white">{% trans "Persons" %}</a>
                             <div class="h-1 bg-white"></div>
-                            <a href="{% url 'reader_i18n:events_list' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-b-lg">{% trans "Upcoming Events" %}</a>
+                            <a href="{% url 'agent:persons_list_with_companies' %}" class="block px-6 py-3 text-lg font-semibold text-black hover:bg-blue-700 hover:text-white rounded-b-lg">{% trans "Persons&Companies" %}</a>
                         </div>
                     </div>
                     <a href="{% url 'core:logout' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">{% trans "Logout" %}</a>

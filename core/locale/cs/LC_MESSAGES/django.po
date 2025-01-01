@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-17 21:47+0100\n"
+"POT-Creation-Date: 2025-01-01 22:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,64 +19,92 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
 "<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: .\core\forms.py:8 .\core\forms.py:26
+#: .\core\forms.py:11 .\core\forms.py:29
 msgid "Your username"
 msgstr "Uživatelské jméno"
 
-#: .\core\forms.py:13 .\core\forms.py:36
+#: .\core\forms.py:16 .\core\forms.py:40
 msgid "Your password"
 msgstr "Heslo"
 
-#: .\core\forms.py:24
+#: .\core\forms.py:27
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: .\core\forms.py:31
+#: .\core\forms.py:35
 msgid "Your email address"
 msgstr "E-mailová adresa"
 
-#: .\core\forms.py:41
+#: .\core\forms.py:45
 msgid "Repeat password"
 msgstr "Opakujte heslo"
 
-#: .\core\templates\core\base.html:21 .\core\templates\core\base.html:35
+#: .\core\templates\core\base.html:15 .\core\templates\core\base.html:23
 msgid "My Site"
 msgstr "Moje stránka"
 
-#: .\core\templates\core\base.html:37
+#: .\core\templates\core\base.html:25
 msgid "Home"
 msgstr "Domů"
 
-#: .\core\templates\core\base.html:40
-msgid "Attandance"
-msgstr ""
+#: .\core\templates\core\base.html:28
+msgid "Attendance"
+msgstr "Docházka"
 
-#: .\core\templates\core\base.html:41
+#: .\core\templates\core\base.html:29
 msgid "Work Days"
 msgstr "Pracovní dny"
 
-#: .\core\templates\core\base.html:42
+#: .\core\templates\core\base.html:30
 msgid "Projects"
 msgstr "Projekty"
 
-#: .\core\templates\core\base.html:43
-msgid "Event list"
+#: .\core\templates\core\base.html:34
+msgid "Administration"
+msgstr "Administrace"
+
+#: .\core\templates\core\base.html:36
+msgid "All Events"
 msgstr "Seznam událostí"
 
-#: .\core\templates\core\base.html:44
+#: .\core\templates\core\base.html:38
+msgid "Filtered Events"
+msgstr "Filtrované události"
+
+#: .\core\templates\core\base.html:40
+msgid "Upcoming Events"
+msgstr "Nadcházející události"
+
+#: .\core\templates\core\base.html:45
+msgid "Reports"
+msgstr "Přehledy"
+
+#: .\core\templates\core\base.html:47
+msgid "Hierarchy"
+msgstr "Hierarchie"
+
+#: .\core\templates\core\base.html:49
+msgid "Persons"
+msgstr "Osoby"
+
+#: .\core\templates\core\base.html:51
+msgid "Persons&Companies"
+msgstr "Osoby a společnosti"
+
+#: .\core\templates\core\base.html:54
 msgid "Logout"
 msgstr "Odhlášení"
 
-#: .\core\templates\core\base.html:46
+#: .\core\templates\core\base.html:56
 msgid "Log In"
 msgstr "Přihlášení"
 
-#: .\core\templates\core\base.html:47 .\core\templates\core\login.html:8
-#: .\core\templates\core\signup.html:3 .\core\templates\core\signup.html:8
+#: .\core\templates\core\base.html:57 .\core\templates\core\signup.html:3
+#: .\core\templates\core\signup.html:8
 msgid "Sign up"
 msgstr "Registrace"
 
-#: .\core\templates\core\login.html:3
+#: .\core\templates\core\login.html:3 .\core\templates\core\login.html:8
 msgid "Log in"
 msgstr "Přihlášení"
 
@@ -99,9 +127,3 @@ msgstr "Email:"
 #: .\core\templates\core\signup.html:29
 msgid "Repeat password:"
 msgstr "Opakujte heslo"
-
-#~ msgid "Persons"
-#~ msgstr "Osoba"
-
-#~ msgid "Switch Language:"
-#~ msgstr "Přepínání jazyka"

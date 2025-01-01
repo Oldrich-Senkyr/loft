@@ -13,9 +13,6 @@
                             <span class="text-gray-600">{{ person.organization }}</span>, 
                             <span class="text-gray-500">{{ person.get_role_display }}</span>
                         </a>
-                        {% if person.organization == 'Specific Company' %}
-                            <span class="text-green-500">Employee</span>
-                        {% endif %}
                     </li>
                 {% empty %}
                     <li class="p-4 text-center text-gray-500">{% trans "No persons found." %}</li>
@@ -29,3 +26,4 @@
         </div>
     {% endif %}
 {% endblock %}
+
