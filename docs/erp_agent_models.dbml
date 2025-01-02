@@ -45,3 +45,10 @@ Table PersonCompany {
   person_id integer [ref: > Person.id, not null, note: "Odkaz na osobu"]
   company_id integer [ref: > Company.id, not null, note: "Odkaz na společnost"]
 }
+
+Table PersonTeam {
+  person_id integer [ref: > Person.id, not null, note: "Odkaz na osobu"]
+  team_id integer [ref: > Team.id, not null, note: "Odkaz na tým"]
+  assigned_date date [not null, default: "CURRENT_DATE", note: "Datum přiřazení do týmu"]
+  role_in_team varchar(50) [null, note: "Role osoby v týmu (např. člen, vedoucí projektu)"]
+}

@@ -72,15 +72,26 @@ admin.site.register(Division, DivisionAdmin)
 
 
 
-# Team Admin
+
+
+
+
+# Registering Team for better management
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('name', 'division', 'get_leader')
+    list_display = ('name', 'division', 'get_leader', 'get_member_count')
+    search_fields = ('name', 'division__name', 'leader__first_name', 'leader__last_name')
+    list_filter = ('division',)
 
     def get_leader(self, obj):
         if obj.leader:
             return f"{obj.leader.last_name} {obj.leader.first_name}"
         return "No Leader Assigned"
     get_leader.short_description = "Team Leader"
+
+    def get_member_count(self, obj):
+        # Calculates the number of members in the team
+        return obj.count()
+    get_member_count.short_description = "Number of Members"
 
 

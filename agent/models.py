@@ -180,6 +180,7 @@ class Team(models.Model):
     name = models.CharField(max_length=255)
     division = models.ForeignKey(Division, on_delete=models.CASCADE, related_name='teams')
     leader = models.ForeignKey('Person', null=True, blank=True, on_delete=models.SET_NULL, related_name='led_teams')
+    count = models.IntegerField(default=0, verbose_name=_("Number of members"), blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -197,3 +198,21 @@ class PersonCompany(models.Model):
 
     def __str__(self):
         return f"{self.person} - {self.company}"
+
+from django.db import models
+
+class PersonTeam(models.Model):
+    person = models.ForeignKey('Person', on_delete=models.CASCADE, related_name='teams')
+    team = models.ForeignKey('Team', on_delete=models.CASCADE, related_name='members')
+    assigned_date = models.DateField(auto_now_add=True)
+    role_in_team = models.CharField(max_length=50, blank=True, null=True, help_text="Role osoby v týmu")
+    count = models.IntegerField(default=0, verbose_name=_("Number of members"), blank=True, null=True)
+
+    class Meta:
+        unique_together = ('person', 'team')
+        verbose_name = "Přiřazení zaměstnance do týmu"
+        verbose_name_plural = "Přiřazení zaměstnanců do týmů"
+
+    def __str__(self):
+        return f"{self.person} in {self.team} as {self.role_in_team or 'Člen'}"
+
