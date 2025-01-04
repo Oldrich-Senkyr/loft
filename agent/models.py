@@ -175,6 +175,9 @@ class Division(models.Model):
     def __str__(self):
         return self.name
     
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Team(models.Model):
     name = models.CharField(max_length=255)
@@ -185,9 +188,22 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
+@receiver(post_save, sender=Team)
+def update_member_count(sender, instance, created, **kwargs):
+    # Only update the count if it's not set already (or if created)
+    new_count = PersonTeam.objects.filter(team=instance).count()
+    
+    # If the count has changed, update the count field and save
+    if instance.count != new_count:
+        instance.count = new_count
+        instance.save(update_fields=['count'])  # Only update the 'count' field to avoid triggering the signal again
+
+
+
+
 class PersonCompany(models.Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="person_companies", verbose_name=_("Person reference"))
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name="company_persons", verbose_name=_("Company reference"))
+    person = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True, related_name="person_companies", verbose_name=_("Person reference"))
+    company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, related_name="company_persons", verbose_name=_("Company reference"))
 
     class Meta:
         constraints = [
@@ -201,18 +217,25 @@ class PersonCompany(models.Model):
 
 from django.db import models
 
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 class PersonTeam(models.Model):
-    person = models.ForeignKey('Person', on_delete=models.CASCADE, related_name='teams')
-    team = models.ForeignKey('Team', on_delete=models.CASCADE, related_name='members')
+    person = models.ForeignKey('Person', on_delete=models.SET_NULL, null=True, blank=True, related_name='person_teams', db_index=True)
+    team = models.ForeignKey('Team', on_delete=models.CASCADE, related_name='team_members',db_index=True)
     assigned_date = models.DateField(auto_now_add=True)
-    role_in_team = models.CharField(max_length=50, blank=True, null=True, help_text="Role osoby v týmu")
-    count = models.IntegerField(default=0, verbose_name=_("Number of members"), blank=True, null=True)
+    role_in_team = models.CharField(
+        max_length=50, 
+        blank=True, 
+        null=True, 
+        help_text=_("Role of the person in the team")  # Default in English
+    )
 
     class Meta:
         unique_together = ('person', 'team')
-        verbose_name = "Přiřazení zaměstnance do týmu"
-        verbose_name_plural = "Přiřazení zaměstnanců do týmů"
+        verbose_name = _("Employee Assignment to Team")  # Default in English
+        verbose_name_plural = _("Employee Assignments to Teams")  # Default in English
 
     def __str__(self):
-        return f"{self.person} in {self.team} as {self.role_in_team or 'Člen'}"
+        return f"{self.person} in {self.team} as {self.role_in_team or _('Member')}"  # Default in English
 

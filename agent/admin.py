@@ -46,10 +46,6 @@ class AppUserAdmin(UserAdmin):
     )
 
 
-
-
-
-
 # Company Admin
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
@@ -76,12 +72,57 @@ admin.site.register(Division, DivisionAdmin)
 
 
 
-# Registering Team for better management
+from django.contrib import admin
+from .models import Team, PersonTeam
+
+class PersonTeamInline(admin.TabularInline):
+    model = PersonTeam
+    extra = 1  # Number of extra empty forms to display
+    verbose_name = "Team Member"
+    verbose_name_plural = "Team Members"
+    fields = ('person', 'role_in_team', 'assigned_date')  # Fields to display
+    readonly_fields = ('assigned_date',)  # Fields that are read-only
+
+from django.contrib import admin
+from agent.models import PersonTeam, Team
+
+class PersonTeamInline(admin.TabularInline):  # Or StackedInline, depending on your layout preference
+    model = PersonTeam
+    extra = 0  # Avoid unnecessary empty forms
+    fields = ('person', 'role', 'other_fields')  # List the fields you want to show in the inline
+    can_delete = True  # Allow deletion if necessary
+
+    def get_queryset(self, request):
+        # Filter out entries where person is null
+        queryset = super().get_queryset(request)
+        return queryset.filter(person__isnull=False)
+
+
+from django.contrib import admin
+from agent.models import PersonTeam, Team
+
+class PersonTeamInline(admin.TabularInline):  # Or StackedInline, depending on your layout preference
+    model = PersonTeam
+    extra = 0  # Avoid unnecessary empty forms
+    # List the actual fields you want to display in the inline admin
+    fields = ('person', 'team')  # Update this list based on your model fields
+    can_delete = True  # Allow deletion if necessary
+
+    def get_queryset(self, request):
+        # Filter out entries where person is null
+        queryset = super().get_queryset(request)
+        return queryset.filter(person__isnull=False)
+
+
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
     list_display = ('name', 'division', 'get_leader', 'get_member_count')
     search_fields = ('name', 'division__name', 'leader__first_name', 'leader__last_name')
     list_filter = ('division',)
+    inlines = [PersonTeamInline]
+
+    # Disable the ability to edit 'count' field in admin form
+    readonly_fields = ('count',)
 
     def get_leader(self, obj):
         if obj.leader:
@@ -90,8 +131,8 @@ class TeamAdmin(admin.ModelAdmin):
     get_leader.short_description = "Team Leader"
 
     def get_member_count(self, obj):
-        # Calculates the number of members in the team
-        return obj.count()
+        # Only count PersonTeam entries where person is not null
+        if obj.pk:  # Ensure the Team object is saved before querying
+            return PersonTeam.objects.filter(team=obj, person__isnull=False).count()
+        return 0
     get_member_count.short_description = "Number of Members"
-
-
